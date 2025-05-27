@@ -1,5 +1,0 @@
-deploy:
-  fitnesse: true
-
-externalPath:
-  login: /systemone/login/rest/
