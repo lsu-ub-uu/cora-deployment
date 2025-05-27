@@ -8,6 +8,22 @@ start minikube, adjust as needed
 minikube start --memory 32192 --cpus 16 --mount --mount-string "/mnt/someplace/minikube/:/mnt/minikube"
 ```
 
+## Install systemOne locally from epc repository
+```bash
+helm repo add epc https://helm.epc.ub.uu.se/repository/helm/
+helm repo update
+
+kubectl create namespace systemone-epc
+kubectl apply -f systemone-secret.yaml --namespace=systemone-epc
+kubectl apply -f systemone-minikube-persistent-volumes.yaml
+helm install my20250527systemone epc/systemone --namespace systemone-epc --set deploy.fitnesse=true
+
+#or search and deploy specific version
+helm search repo epc
+helm install my20250527systemone epc/systemone --namespace systemone-epc --version 0.2.14 --set deploy.fitnesse=true
+```
+
+
 ## Run systemOne locally using minicube, with fitnesse and jsclient
 
 ```bash
