@@ -1,3 +1,5 @@
+{{ include "cora.serveralias" . }}
+---
 {{ include "cora.persistentVolumeClaims" . }}
 ---
 {{ include "cora.solr" . }}

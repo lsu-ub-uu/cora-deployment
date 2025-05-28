@@ -7,13 +7,13 @@ initContainer:
       command:
         - /bin/sh
         - -c
-        - while ! nc -zvw1 systemone-postgresql 5432; do sleep 1; done
+        - while ! nc -zvw1 postgresql 5432; do sleep 1; done
   waitForMq:
     - name: init-wait-for-mq
       image: alpine
       command:
         - sh
         - -c
-        - until nc -z -v -w1 systemone-rabbitmq 5672; do echo "Waiting for RabbitMQ..";
+        - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
 
