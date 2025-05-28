@@ -16,12 +16,12 @@ spec:
         app: {{ .Values.system.name }}-rest
     spec:
       initContainers:
-        {{- toYaml .Values.initContainer.waitForDb | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
       initContainers:
-        {{- toYaml .Values.initContainer.waitForMq | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-rest
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.rest }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.rest }}
         ports:
         - containerPort: 8080
         volumeMounts:

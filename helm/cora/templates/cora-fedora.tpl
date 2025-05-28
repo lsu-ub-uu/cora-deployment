@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.system.name }}-fedora
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.fedora }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fedora }}
         ports:
         - containerPort: 8080
         volumeMounts:

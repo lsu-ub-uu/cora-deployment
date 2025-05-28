@@ -16,12 +16,12 @@ spec:
         app: {{ .Values.system.name }}-gatekeeper
     spec:
       initContainers:
-        {{- toYaml .Values.initContainer.waitForDb | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
       initContainers:
-        {{- toYaml .Values.initContainer.waitForMq | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-gatekeeper
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.gatekeeper }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.gatekeeper }}
         ports:
         - containerPort: 8080
       imagePullSecrets:

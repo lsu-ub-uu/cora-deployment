@@ -16,15 +16,19 @@ spec:
         app: {{ .Values.system.name }}-idplogin
     spec:
       initContainers:
-        {{- toYaml .Values.initContainer.waitForDb | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-idplogin
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.idplogin }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.idplogin }}
         ports:
         - containerPort: 8080
         env:
+        - name: mainSystemDomain
+          value: {{ .Values.externalAccess.systemUrl }}
+        - name: tokenLogoutUrl
+          value: {{ .Values.externalAccess.logoutUrl }}
         - name: JAVA_OPTS
-          value: -Dtoken.logout.url=http://login:8080/login/rest/authToken/
+          value: -Dmain.system.domain=${mainSystemDomain} -Dtoken.logout.url=${tokenLogoutUrl}        
       imagePullSecrets:
       - name: cora-dockers
 

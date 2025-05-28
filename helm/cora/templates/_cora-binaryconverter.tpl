@@ -16,10 +16,10 @@ spec:
         app: {{ .Values.system.name }}-binaryconverter-{{ .Values.binaryConverter.subName }}
     spec:
       initContainers:
-        {{- toYaml .Values.initContainer.waitForMq | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-binaryconverter-{{ .Values.binaryConverter.subName }}
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.binaryconverter }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.binaryconverter }}
         env:
         - name: coraBaseUrl
           value: "http://{{ .Values.system.name }}:8080/{{ .Values.system.name }}/rest/"

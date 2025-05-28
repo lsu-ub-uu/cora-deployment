@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.system.name }}-solr
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.solr }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.solr }}
         ports:
         - containerPort: 8983
         args: ["solr-precreate", "coracore", "/opt/solr/server/solr/configsets/coradefaultcore"]

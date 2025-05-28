@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: {{ .Values.system.name }}-postgresql
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.postgresql }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.postgresql }}
         ports:
         - containerPort: 5432
         env:

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.system.name }}-iip
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.iip }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.iip }}
         ports:
         - containerPort: 80
         env:

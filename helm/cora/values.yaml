@@ -1,0 +1,19 @@
+dockerRepository:
+  url: docker.epc.ub.uu.se/
+initContainer:
+  waitForDb:
+    - name: init-wait-for-db
+      image: alpine
+      command:
+        - /bin/sh
+        - -c
+        - while ! nc -zvw1 systemone-postgresql 5432; do sleep 1; done
+  waitForMq:
+    - name: init-wait-for-mq
+      image: alpine
+      command:
+        - sh
+        - -c
+        - until nc -z -v -w1 systemone-rabbitmq 5672; do echo "Waiting for RabbitMQ..";
+          sleep 5; done
+

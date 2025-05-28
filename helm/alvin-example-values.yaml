@@ -2,6 +2,11 @@ deploy:
   fitnesse: true
   jsclient: false
 
+externalAccess:
+  loginPath: /alvin/login/rest/
+  systemUrl: https://cora.epc.ub.uu.se
+  logoutUrl: https://cora.epc.ub.uu.se/alvin/login/rest/authToken/
+
 port:
   rest: 31081
   login: 31181

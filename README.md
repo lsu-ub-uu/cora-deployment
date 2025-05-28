@@ -32,7 +32,7 @@ helm dependency update systemone/
 kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
 kubectl apply -f systemone-minikube-persistent-volumes.yaml
-helm install my20250523systemone systemone --namespace systemone --set deploy.fitnesse=true
+helm install my20250528systemone systemone --namespace systemone --set deploy.fitnesse=true
 ```
 you can watch the progress with:
 
@@ -41,7 +41,9 @@ watch -n 1 '
   kubectl get pod,service -n systemone;
   echo;
   echo "🐳 Images in use:";
-  kubectl get pods -n systemone -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq
+  kubectl get pods -n systemone -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq;
+  echo;
+  helm -n systemone ls  
 '
 ```
 
@@ -58,7 +60,7 @@ This should start a local version of systemOne accessable at:<br>
 
 ### to remove and start over
 ```bash
-helm uninstall -n systemone my20250523systemone
+helm uninstall -n systemone my20250528systemone
 kubectl get pv -o name | grep "^persistentvolume/systemone" | xargs -r kubectl delete
 kubectl delete secret systemone-secret --namespace=systemone
 kubectl delete namespace systemone

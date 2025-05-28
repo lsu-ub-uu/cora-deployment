@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.system.name }}-fitnesse
-        image: {{ .Values.dockerRepository.url }}{{ .Values.docker.fitnesse }}
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fitnesse }}
         ports:
         - containerPort: 8090
         volumeMounts:

@@ -24,29 +24,13 @@ autoscaling:
 system:
   name: systemone
   pathName: systemOne
-dockerRepository:
-  url: docker.epc.ub.uu.se/
-initContainer:
-  waitForDb:
-    - name: init-wait-for-db
-      image: alpine
-      command:
-        - /bin/sh
-        - -c
-        - while ! nc -zvw1 systemone-postgresql 5432; do sleep 1; done
-  waitForMq:
-    - name: init-wait-for-mq
-      image: alpine
-      command:
-        - sh
-        - -c
-        - until nc -z -v -w1 systemone-rabbitmq 5672; do echo "Waiting for RabbitMQ..";
-          sleep 5; done
 deploy:
   fitnesse: false
   jsclient: true
-externalPath:
-  login: /login/rest/
+externalAccess:
+  loginPath: /login/rest/
+  systemUrl: https://cora.epc.ub.uu.se
+  logoutUrl: http://login:8080/login/rest/authToken/
 port:
   rest: 30080
   login: 30180

@@ -2,6 +2,11 @@ deploy:
   fitnesse: true
   jsclient: false
 
+externalAccess:
+  loginPath: /systemone/login/rest/
+  systemUrl: https://cora.epc.ub.uu.se
+  logoutUrl: https://cora.epc.ub.uu.se/systemone/login/rest/authToken/
+
 port:
   rest: 31080
   login: 31180
