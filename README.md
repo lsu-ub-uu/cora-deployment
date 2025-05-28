@@ -60,10 +60,8 @@ This should start a local version of systemOne accessable at:<br>
 
 ### to remove and start over
 ```bash
-helm uninstall -n systemone my20250528systemone
-kubectl get pv -o name | grep "^persistentvolume/systemone" | xargs -r kubectl delete
-kubectl delete secret systemone-secret --namespace=systemone
 kubectl delete namespace systemone
+kubectl get pv -o name | grep "^persistentvolume/systemone" | xargs -r kubectl delete
 minikube ssh -- "sudo rm -rf /mnt/minikube/systemone/"
 ```
 
@@ -85,6 +83,8 @@ watch -n 1 '
   echo;
   echo "🐳 Images in use:";
   kubectl get pods -n alvin -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq
+  echo;
+  helm -n alvin ls  
 '
 
 
@@ -103,10 +103,8 @@ This should start a local version of diva accessable at:<br>
 
 ### to remove and start over
 ```bash
-helm uninstall -n diva my20250526alvin
-kubectl get pv -o name | grep "^persistentvolume/alvin" | xargs -r kubectl delete
-kubectl delete secret alvin-secret --namespace=alvin
 kubectl delete namespace alvin
+kubectl get pv -o name | grep "^persistentvolume/alvin" | xargs -r kubectl delete
 minikube ssh -- "sudo rm -rf /mnt/minikube/alvin/"
 ```
 
@@ -129,6 +127,8 @@ watch -n 1 '
   echo;
   echo "🐳 Images in use:";
   kubectl get pods -n diva -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq
+  echo;
+  helm -n diva ls  
 '
 
 
@@ -147,10 +147,8 @@ This should start a local version of diva accessable at:<br>
 
 ### to remove and start over
 ```bash
-helm uninstall -n diva my20250523diva
-kubectl get pv -o name | grep "^persistentvolume/diva" | xargs -r kubectl delete
-kubectl delete secret diva-secret --namespace=diva
 kubectl delete namespace diva
+kubectl get pv -o name | grep "^persistentvolume/diva" | xargs -r kubectl delete
 minikube ssh -- "sudo rm -rf /mnt/minikube/diva/"
 ```
 
