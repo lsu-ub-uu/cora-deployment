@@ -6,11 +6,14 @@ start minikube, adjust as needed
 
 ```bash
 minikube start --memory 32192 --cpus 16 --mount --mount-string "/mnt/someplace/minikube/:/mnt/minikube"
+
+
+
 ```
 
 ## Install systemOne locally from epc repository
 ```bash
-helm repo add epc https://helm.epc.ub.uu.se/repository/helm/
+helm repo add epc https://helm.epc.ub.uu.se/
 helm repo update
 
 kubectl create namespace systemone-epc

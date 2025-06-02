@@ -25,3 +25,5 @@
 {{ include "cora.login" . }}
 ---
 {{ include "cora.binaryconverter" . }}
+---
+{{ include "cora.index" . }}

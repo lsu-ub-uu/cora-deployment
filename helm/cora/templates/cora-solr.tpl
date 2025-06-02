@@ -1,4 +1,4 @@
-{{- define "cora.rest" -}}
+{{- define "cora.solr" -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
