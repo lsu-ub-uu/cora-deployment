@@ -35,7 +35,6 @@ externalAccess:
   restUrl: http://diva:8080/diva/rest
   loginRestUrl: http://login:8080/login/rest
   divaClientBasePath: /divaclient
-  environment: preview
 port:
   rest: 30082
   login: 30182

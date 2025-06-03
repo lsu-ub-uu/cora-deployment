@@ -27,8 +27,6 @@ spec:
           value: {{ trimPrefix "https://" .Values.externalAccess.systemUrl }}
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
-        - name: ENVIRONMENT
-          value: {{ .Values.externalAccess.environment }}
         ports:
         - containerPort: 5173
       imagePullSecrets:
