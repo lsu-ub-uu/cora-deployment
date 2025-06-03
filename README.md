@@ -7,15 +7,17 @@ start minikube, adjust as needed
 ```bash
 minikube start --memory 32192 --cpus 16 --mount --mount-string "/mnt/someplace/minikube/:/mnt/minikube"
 
-
-
 ```
-
-## Install systemOne locally from epc repository
+## To use dockers from epc repository
 ```bash
 helm repo add epc https://helm.epc.ub.uu.se/
 helm repo update
+```
 
+
+
+## Install systemOne locally from epc repository
+```bash
 kubectl create namespace systemone-epc
 kubectl apply -f systemone-secret.yaml --namespace=systemone-epc
 kubectl apply -f systemone-minikube-persistent-volumes.yaml
