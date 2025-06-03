@@ -43,7 +43,7 @@ you can watch the progress with:
 
 ```bash
 watch -n 1 '
-  kubectl get pod,service -n systemone;
+  kubectl get pod,service,jobs -n systemone;
   echo;
   echo "🐳 Images in use:";
   kubectl get pods -n systemone -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq;
@@ -84,7 +84,7 @@ you can watch the progress with:
 
 ```bash
 watch -n 1 '
-  kubectl get pod,service -n alvin;
+  kubectl get pod,service,jobs -n alvin;
   echo;
   echo "🐳 Images in use:";
   kubectl get pods -n alvin -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq
@@ -128,7 +128,7 @@ you can watch the progress with:
 
 ```bash
 watch -n 1 '
-  kubectl get pod,service -n diva;
+  kubectl get pod,service,jobs -n diva;
   echo;
   echo "🐳 Images in use:";
   kubectl get pods -n diva -o jsonpath="{range .items[*]}{range .spec.containers[*]}{.image}{\"\n\"}{end}" | sort | uniq
