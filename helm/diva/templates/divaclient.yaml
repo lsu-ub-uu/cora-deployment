@@ -1,0 +1,52 @@
+{{- if .Values.deploy.divaclient }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.system.name }}-divaclient-deployment
+  labels:
+    app: {{ .Values.system.name }}-divaclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.system.name }}-divaclient
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.system.name }}-divaclient
+    spec:
+      containers:
+      - name: {{ .Values.system.name }}-divaclient
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.divaclient }}
+        env:
+        - name: CORA_API_URL
+          value: {{ .Values.externalAccess.restUrl }}
+        - name: CORA_LOGIN_URL
+          value: {{ .Values.externalAccess.loginRestUrl }}
+        - name: DOMAIN
+          value: {{ trimPrefix "https://" .Values.externalAccess.systemUrl }}
+        - name: BASE_PATH
+          value: {{ .Values.externalAccess.divaClientBasePath}}
+        ports:
+        - containerPort: 5173
+      imagePullSecrets:
+      - name: cora-dockers
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.system.name }}-divaclient
+spec:
+  type: NodePort
+  selector:
+    app: {{ .Values.system.name }}-divaclient
+  ports:
+    - protocol: TCP
+      port: 5173
+      targetPort: 5173
+      nodePort:  {{ .Values.port.divaclient }}
+
+{{- end }}
+

@@ -148,6 +148,8 @@ This should start a local version of diva accessable at:<br>
 * jsClient: http://192.168.49.2:30282/jsclient/
 * idplogin: localhost:30382/login
 * fitnesse: http://192.168.49.2:30582/diva/fitnesse/
+* divaclient: http://192.168.49.2:30682/divaclient
+
 
 
 ### to remove and start over
