@@ -1,0 +1,9 @@
+deploy:
+  fitnesse: true
+
+externalAccess:
+  systemUrl: http://192.168.49.2
+  logoutUrl: http://192.168.49.2/diva/login/rest/authToken/
+
+security:
+  divaClientSecureSessionCookie: false
