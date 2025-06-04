@@ -1,8 +1,8 @@
-{{- define "cora.index" -}}
+{{- define "cora.job-index" -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Values.system.name }}-index
+  name: {{ .Values.system.name }}-job-index
   annotations:
     "helm.sh/hook": post-install
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded

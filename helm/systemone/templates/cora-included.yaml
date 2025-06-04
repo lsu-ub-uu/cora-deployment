@@ -26,4 +26,4 @@
 ---
 {{ include "cora.binaryconverter" . }}
 ---
-{{ include "cora.index" . }}
+{{ include "cora.job-index" . }}
