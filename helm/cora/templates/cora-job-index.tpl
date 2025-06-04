@@ -13,8 +13,6 @@ spec:
       containers:
         - name: {{ .Values.system.name }}-job-index
           image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.jobindex }}
-        - name: indexer
-          image: epc/kubectl:latest
           env:
             - name: LOGINID
               valueFrom:
@@ -26,6 +24,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.system.name }}-secret
                   key: indexAppToken
+            - name: RECORDTYPE_URL
+              value: "http://{{ .Values.system.name }}:8080/{{ .Values.system.name }}/rest/record/recordType"
             - name: INDEX_URL
               value: "http://{{ .Values.system.name }}:8080/{{ .Values.system.name }}/rest/record/index"
             - name: LOGIN_URL
@@ -46,9 +46,18 @@ spec:
               start(){
               echo '33333333333'
                 login
-                for type in recordType validationType metadata text collectTerm presentation guiElement system permissionUnit; do
-                  indexMetadata $type
+                #for type in recordType validationType metadata text collectTerm presentation guiElement system permissionUnit; do
+                #  indexMetadata $type
+                #done
+                local xml=$(curl -s -X GET -k -H "authToken: ${AUTH_TOKEN}" -H "Accept: application/vnd.cora.recordList+xml" "${RECORDTYPE_URL}")
+                recordTypes=$(echo "$xml" | xmllint --xpath '//dataList/data/record/actionLinks/index/body/workOrder/recordType/recordId' - 2>/dev/null | sed -e 's|<recordId>|\n|g' -e 's|</recordId>||g' | grep -v '^$')
+                echo "$recordTypes"
+
+                for type in $recordTypes; do
+                  echo "$type"
+                  indexMetadata "$type"
                 done
+                
                 logoutFromCora
               }
 
@@ -73,6 +82,7 @@ spec:
               logoutFromCora(){
                 echo
                 echo 'Logging out on' ${AUTH_TOKEN_DELETE_URL}
+                echo
                 curl -s -X DELETE -k -H "authToken: ${AUTH_TOKEN}" -i ${AUTH_TOKEN_DELETE_URL}
                 echo 'Logged out'
               }

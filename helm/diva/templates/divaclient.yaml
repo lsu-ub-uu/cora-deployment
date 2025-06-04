@@ -23,10 +23,15 @@ spec:
           value: "http://diva:8080/diva/rest"
         - name: CORA_LOGIN_URL
           value: "http://login:8080/login/rest"
-        - name: DOMAIN
-          value: {{ trimPrefix "https://" .Values.externalAccess.systemUrl }}
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
+        - name: SESSION_SECURE
+          value: {{ .Values.security.divaClientSecureSessionCookie | quote }}
+        - name: SESSION_SECRETS
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: divaClientSessionCookieSecrets
         ports:
         - containerPort: 5173
       imagePullSecrets:
