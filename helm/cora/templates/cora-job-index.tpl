@@ -11,8 +11,10 @@ spec:
     spec:
       restartPolicy: OnFailure
       containers:
+        - name: {{ .Values.system.name }}-job-index
+          image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.jobindex }}
         - name: indexer
-          image: bitnami/kubectl:latest
+          image: epc/kubectl:latest
           env:
             - name: LOGINID
               valueFrom:
