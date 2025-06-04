@@ -2,13 +2,13 @@ serviceAccount:
   create: true
   automount: true
   annotations: {}
-  name: ""
+  name: ''
 service:
   type: ClusterIP
   port: 80
 ingress:
   enabled: false
-  className: ""
+  className: ''
   annotations: {}
   hosts:
     - host: chart-example.local
