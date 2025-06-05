@@ -58,3 +58,4 @@ docker:
   gatekeeper: diva-docker-gatekeeper:1.1.0
   rest: diva-docker-cora:1.1.0
   divaclient: diva-docker-divaclient:1.2.0
+  jobindex: cora-docker-console:1.0.0
