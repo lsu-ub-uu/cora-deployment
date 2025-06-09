@@ -6,5 +6,5 @@ version: 0.4.3
 appVersion: 1.21.0
 dependencies:
   - name: cora
-    version: 0.1.1
+    version: 0.1.2
     repository: file://../cora
