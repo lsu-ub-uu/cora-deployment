@@ -1,0 +1,60 @@
+{{- if .Values.deploy.playwright }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.system.name }}-playwright-deployment
+  labels:
+    app: {{ .Values.system.name }}-playwright
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.system.name }}-playwright
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.system.name }}-playwright
+    spec:
+      containers:
+      - name: {{ .Values.system.name }}-playwright
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.playwright }}
+        env:
+        - name: TARGET_URL
+          value: "http://diva-divaclient:5173/divaclient"
+        - name: CORA_API_URL
+          value: "http://diva:8080/diva/rest"
+        - name: CORA_LOGIN_URL
+          value: "http://login:8080/login/rest"
+        - name: CORA_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: divaAdminUser
+        - name: CORA_APPTOKEN
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: divaAdminApptoken
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: cora-dockers
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.system.name }}-playwright
+spec:
+  type: NodePort
+  selector:
+    app: {{ .Values.system.name }}-playwright
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort:  {{ .Values.port.playwright }}
+
+{{- end }}
+
