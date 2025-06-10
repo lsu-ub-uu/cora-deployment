@@ -151,6 +151,7 @@ This should start a local version of diva accessable at:<br>
 - idplogin: localhost:30382/login
 - fitnesse: http://192.168.49.2:30582/diva/fitnesse/
 - divaclient: http://192.168.49.2:30682/divaclient
+- playwright: http://192.168.49.2:30782
 
 ### to remove and start over
 
