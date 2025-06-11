@@ -153,6 +153,16 @@ This should start a local version of diva accessable at:<br>
 - divaclient: http://192.168.49.2:30682/divaclient
 - playwright: http://192.168.49.2:30782
 
+### Running Playwright locally
+
+Playwright UI uses Service workers and requires running on localhost (or HTTPS). Use port forwarding to access it locally.
+
+```bash
+  kubectl -n diva port-forward service/diva-playwright 8080:8080
+```
+
+Then the tests are available at http://localhost:8080
+
 ### to remove and start over
 
 ```bash
