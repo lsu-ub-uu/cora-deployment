@@ -4,7 +4,7 @@ deploy:
 
 externalAccess:
   systemUrl: http://192.168.49.2
-  logoutUrl: http://192.168.49.2/diva/login/rest/authToken/
+  logoutUrl: http://192.168.49.2:30182/login/rest/authToken/
 
 security:
   divaClientSecureSessionCookie: false
