@@ -30,6 +30,7 @@ deploy:
   alvinclient: true
 externalAccess:
   loginPath: /login/rest/
+  systemHost: cora.epc.ub.uu.se
   systemUrl: https://cora.epc.ub.uu.se
   logoutUrl: http://login:8080/login/rest/authToken/
 port:

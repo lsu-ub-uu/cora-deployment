@@ -19,8 +19,10 @@ spec:
       - name: {{ .Values.system.name }}-alvinclient
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.alvinclient }}
         env:
+        - name: DEBUG
+          value: "false"
         - name: API_HOST
-          value: {{ .Values.externalAccess.systemUrl}}
+          value: "http://{{ .Values.system.name }}:8080/{{ .Values.system.name }}"
         - name: ALLOWED_HOSTS
           value: {{ .Values.externalAccess.systemHost}}
         - name: CSRF_TRUSTED_ORIGINS
