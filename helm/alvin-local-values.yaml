@@ -1,0 +1,8 @@
+deploy:
+  fitnesse: true
+
+externalAccess:
+  systemHost: 192.168.49.2
+  systemUrl: http://192.168.49.2
+  logoutUrl: http://192.168.49.2:30182/login/rest/authToken/
+

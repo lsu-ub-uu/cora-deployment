@@ -1,0 +1,57 @@
+{{- if .Values.deploy.alvinclient }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.system.name }}-alvinclient-deployment
+  labels:
+    app: {{ .Values.system.name }}-alvinclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.system.name }}-alvinclient
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.system.name }}-alvinclient
+    spec:
+      containers:
+      - name: {{ .Values.system.name }}-alvinclient
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.alvinclient }}
+        env:
+        - name: API_HOST
+          value: {{ .Values.externalAccess.systemUrl}}
+        - name: ALLOWED_HOSTS
+          value: {{ .Values.externalAccess.systemHost}}
+        - name: CSRF_TRUSTED_ORIGINS
+          value: {{ .Values.externalAccess.systemUrl}}
+        - name: CORS_ALLOWED_ORIGINS
+          value: {{ .Values.externalAccess.systemUrl}}
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: alvinClientSecretKey
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: cora-dockers
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.system.name }}-alvinclient
+spec:
+  type: NodePort
+  selector:
+    app: {{ .Values.system.name }}-alvinclient
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort:  {{ .Values.port.alvinclient }}
+
+{{- end }}
+
