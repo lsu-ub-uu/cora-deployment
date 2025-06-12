@@ -62,6 +62,7 @@ This should start a local version of systemOne accessable at:<br>
 - jsClient: http://192.168.49.2:30280/jsclient/
 - idplogin: localhost:30380/login
 - fitnesse: http://192.168.49.2:30580/systemone/fitnesse/
+- alvinclient: http://192.168.49.2:30681/
 
 ### to remove and start over
 
@@ -79,7 +80,7 @@ helm dependency update alvin/
 kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
 kubectl apply -f alvin-minikube-persistent-volumes.yaml
-helm install my20250526alvin alvin --namespace alvin --set deploy.fitnesse=true
+helm install my20250526alvin alvin --namespace alvin -f alvin-local-values.yaml
 ```
 
 you can watch the progress with:

@@ -27,8 +27,10 @@ system:
 deploy:
   fitnesse: false
   jsclient: true
+  alvinclient: true
 externalAccess:
   loginPath: /login/rest/
+  systemHost: cora.epc.ub.uu.se
   systemUrl: https://cora.epc.ub.uu.se
   logoutUrl: http://login:8080/login/rest/authToken/
 port:
@@ -37,6 +39,7 @@ port:
   jsclient: 30281
   idplogin: 30381
   fitnesse: 30581
+  alvinclient: 30681
 docker:
   rabbitmq: cora-docker-rabbitmq:1.2.0
   fedora: cora-docker-fedora:1.1.0
@@ -51,3 +54,4 @@ docker:
   gatekeeper: alvin-docker-gatekeeper:1.1.0
   rest: alvin-docker-cora:1.2.0
   jobindex: cora-docker-console:1.0.0
+  alvinclient: alvin-docker-alvinclient:1.0.0
