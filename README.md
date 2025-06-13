@@ -62,7 +62,7 @@ This should start a local version of systemOne accessable at:<br>
 - jsClient: http://192.168.49.2:30280/jsclient/
 - idplogin: localhost:30380/login
 - fitnesse: http://192.168.49.2:30580/systemone/fitnesse/
-- alvinclient: http://192.168.49.2:30681/
+
 
 ### to remove and start over
 
@@ -107,6 +107,7 @@ This should start a local version of diva accessable at:<br>
 - jsClient: http://192.168.49.2:30281/jsclient/
 - idplogin: localhost:30381/login
 - fitnesse: http://192.168.49.2:30581/alvin/fitnesse/
+- alvinclient: http://192.168.49.2:30681/
 
 ### to remove and start over
 
