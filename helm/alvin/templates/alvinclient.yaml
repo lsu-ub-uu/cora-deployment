@@ -29,6 +29,8 @@ spec:
           value: {{ .Values.externalAccess.systemUrl}}
         - name: CORS_ALLOWED_ORIGINS
           value: {{ .Values.externalAccess.systemUrl}}
+        - name: ALVIN_CLIENT_PATH
+          value: {{ .Values.externalAccess.alvinClientPath}}
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:

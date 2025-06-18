@@ -99,14 +99,14 @@ watch -n 1 '
 
 get your minikube ip: minikube ip
 
-This should start a local version of diva accessable at:<br>
+This should start a local version of alvin accessable at:<br>
 
 - rest: http://192.168.49.2:30081/alvin/rest/
 - login: localhost:30181/
 - jsClient: http://192.168.49.2:30281/jsclient/
 - idplogin: localhost:30381/login
 - fitnesse: http://192.168.49.2:30581/alvin/fitnesse/
-- alvinclient: http://192.168.49.2:30681/
+- alvinclient: http://192.168.49.2:30681/alvin/alvinclient
 
 
 ### to remove and start over

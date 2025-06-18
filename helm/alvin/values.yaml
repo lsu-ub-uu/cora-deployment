@@ -33,6 +33,7 @@ externalAccess:
   systemHost: cora.epc.ub.uu.se
   systemUrl: https://cora.epc.ub.uu.se
   logoutUrl: http://login:8080/login/rest/authToken/
+  alvinClientPath: /alvin/alvinclient
 port:
   rest: 30081
   login: 30181
