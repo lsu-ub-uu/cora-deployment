@@ -30,10 +30,12 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-apache-proxy
 spec:
+  type: NodePort
   selector:
     app: {{ .Values.system.name }}-apache
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort:  {{ .Values.port.apache }}
 {{- end }}
