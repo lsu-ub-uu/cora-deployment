@@ -1,0 +1,6 @@
+deploy:
+  fitnesse: true
+
+externalAccess:
+  systemUrl: http://systemone:8080
+  logoutUrl: http://login:8080/login/rest/authToken/
