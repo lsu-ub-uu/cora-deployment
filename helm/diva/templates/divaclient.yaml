@@ -20,7 +20,7 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.divaclient }}
         env:
         - name: CORA_API_URL
-          value: "http://diva:8080/diva/rest"
+          value: {{ .Values.externalAccess.restUrl }}
         - name: CORA_LOGIN_URL
           value: "http://login:8080/login/rest"
         - name: BASE_PATH
