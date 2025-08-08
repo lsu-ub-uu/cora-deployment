@@ -24,18 +24,15 @@ spec:
         env:
         - name: internalApacheAliasAndPort
           value: someApacheInternalName:80
-        - name: baseUrl
+        - name: BASE_URL
           value: http://$(internalApacheAliasAndPort)/{{ .Values.system.name }}/
-        - name: loginUrl
+        - name: LOGIN_URL
           value: http://$(internalApacheAliasAndPort)/{{ .Values.system.name }}/login/
-        - name: idpLoginUrl
+        - name: IDP_LOGIN_URL
           value: http://$(internalApacheAliasAndPort)/{{ .Values.system.name }}/idplogin/
           # Gatekeeper should not be mapped in apache, therefore gatekeeper internal pod alias is used.
-        - name: gatekeeperServerUrl
+        - name: GATEKEEPER_SERVER_URL
           value: http://gatekeeper:8080/gatekeeperserver/
-          # Not sure how to add that variable on the pod start
-        - name: fitnesseVariables 
-          value: -DsystemUnderTestUrl=$(baseUrl) -DappTokenVerifierUrl=$(loginUrl) -DidpLoginUrl=$(idpLoginUrl) -DgatekeeperServerUrl=$(gatekeeperServerUrl) 
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
           name: archive-read-only
