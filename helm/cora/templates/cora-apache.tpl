@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.system.name }}-apache-proxy
+  name: apache
 spec:
   type: NodePort
   selector:
