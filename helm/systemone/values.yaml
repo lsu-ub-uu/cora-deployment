@@ -28,10 +28,10 @@ deploy:
   fitnesse: false
   jsclient: true
 externalAccess:
+  systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
  # loginPath: /login/rest/
  # systemUrl: https://cora.epc.ub.uu.se
-  systemUrl: http://192.168.49.2:30980
-#  logoutUrl: http://login:8080/login/rest/authToken/
+ # logoutUrl: http://login:8080/login/rest/authToken/
 port:
   rest: 30080
   login: 30180
