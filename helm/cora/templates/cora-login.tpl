@@ -24,8 +24,7 @@ spec:
         - containerPort: 8080
         env:
         - name: loginPublicPathToSystem
-         # value: {{ .Values.externalAccess.loginPath }}
-          value: /{{ .Values.system.name }}/login/rest/
+          value: /login/rest/
         - name: POSTGRES_URL
           value: jdbc:postgresql://{{ .Values.system.name }}-postgresql:5432/{{ .Values.system.name }}
         - name: POSTGRES_USER

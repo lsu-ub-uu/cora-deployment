@@ -23,9 +23,9 @@ spec:
         - containerPort: 8090
         env:
         - name: BASE_URL
-          value: http://apache/{{ .Values.system.name }}/
+          value: http://apache/
         - name: LOGIN_URL
-          value: http://apache/{{ .Values.system.name }}/login/
+          value: http://apache/login/
         - name: IDP_LOGIN_URL
           value: http://idplogin:8080/idplogin/
           # Gatekeeper should not be mapped in apache, therefore gatekeeper internal pod alias is used.

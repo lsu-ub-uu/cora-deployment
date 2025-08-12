@@ -27,7 +27,7 @@ spec:
           value: {{ .Values.externalAccess.systemUrl }}
         - name: tokenLogoutUrl
         #  value: {{ .Values.externalAccess.logoutUrl }}
-          value: {{ .Values.externalAccess.systemUrl }}/{{ .Values.system.name }}/login/rest/authToken/
+          value: {{ .Values.externalAccess.systemUrl }}/login/rest/authToken/
         - name: JAVA_OPTS
           value: -Dmain.system.domain=${mainSystemDomain} -Dtoken.logout.url=${tokenLogoutUrl}        
       imagePullSecrets:
