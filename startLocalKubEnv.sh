@@ -10,7 +10,6 @@ Usage: $(basename "$0") <system_name>
 
 Examples:
   $(basename "$0") systemone
-  $(basename "$0") diva myCustomRelease
 EOF
     exit 1
 }
@@ -31,7 +30,9 @@ fi
 # Helm values file naming assumption
 VALUES_FILE="${SYSTEM}-local-values.yaml"
 SECRET_FILE="${SYSTEM}-secret.yaml"
-PV_FILE="${SYSTEM}-minikube-persistent-volumes.yaml"
+PERMISSION_VOLUMES_FILE="${SYSTEM}-minikube-persistent-volumes.yaml"
+DATE=$(date +%Y%m%d)
+RELEASE="my${DATE}${SYSTEM}"
 
 # Helm repo setup
 helm repo add epc https://helm.epc.ub.uu.se/
@@ -48,7 +49,7 @@ kubectl create namespace "${SYSTEM}" --dry-run=client -o yaml | kubectl apply -f
 
 # Apply Kubernetes manifests
 kubectl apply -f "${SECRET_FILE}" --namespace="${SYSTEM}"
-kubectl apply -f "${PV_FILE}"
+kubectl apply -f "${PERMISSION_VOLUMES_FILE}"
 
 # Install Helm chart
 helm install "${RELEASE}" "${SYSTEM}" \

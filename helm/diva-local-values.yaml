@@ -3,9 +3,9 @@ deploy:
   playwright: true
 
 externalAccess:
-  restUrl: http://192.168.49.2:30982/diva/rest
-  systemUrl: http://diva:8080
-  logoutUrl: http://login:8080/login/rest/authToken/
+  systemUrl: http://192.168.49.2:30982
+  #restUrl: http://192.168.49.2:30982/rest
+  #logoutUrl: http://login:8080/login/rest/authToken/
 
 security:
   divaClientSecureSessionCookie: false

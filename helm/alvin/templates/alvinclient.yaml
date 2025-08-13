@@ -22,7 +22,7 @@ spec:
         - name: DEBUG
           value: "false"
         - name: API_HOST
-          value: "http://{{ .Values.system.name }}:8080/{{ .Values.system.name }}"
+          value: "http://apache"
         - name: ALLOWED_HOSTS
           value: {{ .Values.externalAccess.systemHost}}
         - name: CSRF_TRUSTED_ORIGINS
