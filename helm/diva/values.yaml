@@ -38,19 +38,19 @@ port:
   playwright: 30782
   apache: 30982
 docker:
-  rabbitmq: cora-docker-rabbitmq:1.2.0
-  fedora: cora-docker-fedora:1.1.0
-  solr: cora-docker-solr:1.1.0
-  idplogin: cora-docker-idplogin:1.1.0
-  iip: cora-docker-iipimageserver:1.1.0
-  login: cora-docker-login:1.1.0
-  jsclient: cora-docker-jsclient:1.5-SNAPSHOT
-  binaryconverter: cora-docker-binaryconverter:1.3.0
-  postgresql: diva-docker-postgresql:1.23.0
-  fitnesse: diva-cora-docker-fitnesse:1.8.1-SNAPSHOT
+  rabbitmq: cora-docker-rabbitmq:1.3.0
+  fedora: cora-docker-fedora:1.2.0
+  solr: cora-docker-solr:1.2.0
+  idplogin: cora-docker-idplogin:1.2.0
+  iip: cora-docker-iipimageserver:1.2.0
+  login: cora-docker-login:1.2.0
+  jsclient: cora-docker-jsclient:1.6-SNAPSHOT
+  binaryconverter: cora-docker-binaryconverter:1.4.0
+  postgresql: diva-docker-postgresql:1.24.0
+  fitnesse: diva-cora-docker-fitnesse:1.9-SNAPSHOT
   gatekeeper: diva-docker-gatekeeper:1.1.0
   rest: diva-docker-cora:1.5-SNAPSHOT
-  divaclient: diva-docker-divaclient:1.21.0
+  divaclient: diva-docker-divaclient:1.30.0
   apache: diva-docker-apache:1.1-SNAPSHOT
   jobindex: cora-docker-console:1.0.0
-  playwright: diva-docker-playwright:1.10.0
+  playwright: diva-docker-playwright:1.12.0
