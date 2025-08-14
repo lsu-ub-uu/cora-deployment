@@ -50,12 +50,10 @@ kind: Service
 metadata:
   name: login
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-login
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort:  {{ .Values.port.login }}
 {{- end }}

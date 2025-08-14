@@ -31,13 +31,11 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-jsclient
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-jsclient
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort:  {{ .Values.port.jsclient }}
 {{- end }}
 {{- end }}

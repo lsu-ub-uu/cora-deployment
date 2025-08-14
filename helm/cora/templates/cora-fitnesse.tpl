@@ -55,13 +55,11 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-fitnesse
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-fitnesse
   ports:
     - protocol: TCP
       port: 8090
       targetPort: 8090
-      nodePort:  {{ .Values.port.fitnesse }}
 {{- end }}
 {{- end }}

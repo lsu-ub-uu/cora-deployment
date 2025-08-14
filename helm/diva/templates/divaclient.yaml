@@ -44,14 +44,12 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-divaclient
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-divaclient
   ports:
     - protocol: TCP
       port: 5173
       targetPort: 5173
-      nodePort:  {{ .Values.port.divaclient }}
 
 {{- end }}
 
