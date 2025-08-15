@@ -75,12 +75,6 @@ verify_system_selection() {
 prepare_for_installation() {
     print_deployment_info
 
-    # Prune docker images / clear image cache
-    if [[ "$NO_CACHE" == "true" ]]; then
-        print_step "Pruning cached docker images..."
-        minikube ssh -- docker system prune --all --force
-    fi
-
     # Start minikube
     if ! minikube status | grep -q "Running"; then
         print_step "Minikube is not running. Starting Minikube..."
@@ -89,6 +83,12 @@ prepare_for_installation() {
 
         print_step "Waiting for all kube-system pods to be running before proceeding..."
         kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s
+    fi
+    
+    # Prune docker images / clear image cache
+    if [[ "$NO_CACHE" == "true" ]]; then
+        print_step "Pruning cached docker images..."
+        minikube ssh -- docker system prune --all --force
     fi
 }
 
