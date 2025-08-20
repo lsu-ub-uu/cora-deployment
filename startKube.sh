@@ -1,12 +1,13 @@
 #!/bin/bash
+MINIKUBE_MOUNT="/tmp/minikube/minik8mount/"
+CPUS="8"
+MEMORY="16096"
 HELM_REPO="epc"
 HELM_REPO_URL="https://helm.epc.ub.uu.se/"
-CHART_LOCATION="helm"
-MEMORY="16096"
-CPUS="8"
 VALID_SYSTEMS=("systemone" "diva" "alvin")
 UNINSTALL="false"
 NO_CACHE="false"
+CHART_LOCATION="helm"
 NAMESPACE=""
 
 start_minikube() {
@@ -78,13 +79,13 @@ prepare_for_installation() {
     # Start minikube
     if ! minikube status | grep -q "Running"; then
         print_step "Minikube is not running. Starting Minikube..."
-        minikube start --memory $MEMORY --cpus $CPUS --mount --mount-string "/home/marcus/minikube/minik8mount/:/mnt/minikube"
+        minikube start --memory $MEMORY --cpus $CPUS --mount --mount-string "$MINIKUBE_MOUNT:/mnt/minikube"
         until minikube status | grep -q "Running"; do sleepy "waiting for minikube status Running..." 3; done
 
         print_step "Waiting for all kube-system pods to be running before proceeding..."
         kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s
 
-        # Step 2: Patch inotify limits in Minikube
+        # Increase inotify limits in Minikube
         print_step "Increasing inotify limits inside minikube..."
         minikube ssh -- "sudo sysctl -w fs.inotify.max_user_instances=1024"
         minikube ssh -- "sudo sysctl -w fs.inotify.max_user_watches=524288"
