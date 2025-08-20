@@ -83,6 +83,11 @@ prepare_for_installation() {
 
         print_step "Waiting for all kube-system pods to be running before proceeding..."
         kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s
+
+        # Step 2: Patch inotify limits in Minikube
+        print_step "Increasing inotify limits inside minikube..."
+        minikube ssh -- "sudo sysctl -w fs.inotify.max_user_instances=1024"
+        minikube ssh -- "sudo sysctl -w fs.inotify.max_user_watches=524288"
     fi
     
     # Prune docker images / clear image cache
