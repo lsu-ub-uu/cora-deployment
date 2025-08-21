@@ -89,7 +89,7 @@ prepare_for_installation() {
         until minikube status | grep -q "Running"; do sleepy "waiting for minikube status Running..." 3; done
 
         print_step "Waiting for all kube-system pods to be running before proceeding..."
-        kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s --atomic
+        kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s
 
         # Increase inotify limits in Minikube
         print_step "Increasing inotify limits inside minikube..."
