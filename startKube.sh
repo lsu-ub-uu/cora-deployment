@@ -29,7 +29,13 @@ uninstall_release() {
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 print_usage() {
-    print_step "Usage: startKube <system> || optional settings: --uninstall, --nocache"
+    print_step "Usage: $(basename "$0") <system> [OPTIONS]"
+    echo "Systems:"
+    echo "   ${VALID_SYSTEMS[*]}"
+    echo ""
+    echo "Options:"
+    echo "  --uninstall, -rm    Uninstall the specified system"
+    echo "  --nocache, -nc      Prune all docker images inside minikube"
     exit 1
 }
 
@@ -46,7 +52,7 @@ script_setup() {
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            --uninstall|-uninstall)
+            --uninstall|-rm)
                 UNINSTALL="true"
                 shift
                 ;;
@@ -83,7 +89,7 @@ prepare_for_installation() {
         until minikube status | grep -q "Running"; do sleepy "waiting for minikube status Running..." 3; done
 
         print_step "Waiting for all kube-system pods to be running before proceeding..."
-        kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s
+        kubectl wait --for=condition=Ready pod --all --namespace="kube-system" --timeout=300s --atomic
 
         # Increase inotify limits in Minikube
         print_step "Increasing inotify limits inside minikube..."
@@ -184,7 +190,7 @@ print_deployment_info() {
 
 print_deployment_access() {
     MINIKUBE_IP=$(minikube ip)
-    print_step "Cluster access:"
+    print_step "Cluster node port access:"
     kubectl get svc --all-namespaces --field-selector spec.type=NodePort -o json \
     | jq -r --arg ip "$MINIKUBE_IP" '
     .items[] |
