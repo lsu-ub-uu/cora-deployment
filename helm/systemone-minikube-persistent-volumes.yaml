@@ -113,3 +113,23 @@ spec:
     namespace: systemone
     name: systemone-converted-files-read-only-volume-claim
 ---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-kub-credentials-read-only-volume
+  labels:
+    type: local
+    app: local-kub-credentials
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: /mnt/minikube/certificates/local/shibboleth
+  claimRef:
+    namespace: systemone
+    name: local-kub-credentials-read-only-volume-claim
+---

@@ -20,6 +20,14 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.apache }}
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: "/etc/shibboleth/credentials"
+          name: credentials-read-only
+          readOnly: true
+      volumes:
+        - name: credentials-read-only
+          persistentVolumeClaim:
+            claimName: {{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
       imagePullSecrets:
       - name: cora-dockers
 

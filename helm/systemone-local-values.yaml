@@ -3,3 +3,5 @@ deploy:
 
 externalAccess:
   systemUrl: http://192.168.49.2:30980
+shibboleth:
+  domain: local-kub

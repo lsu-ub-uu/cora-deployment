@@ -79,4 +79,20 @@ spec:
       storage: 20Gi
 
 ---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
+  labels:
+    app: {{ .Values.shibboleth.domain }}-credentials-read-only-volume
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 20Gi
+
+---
 {{- end }}

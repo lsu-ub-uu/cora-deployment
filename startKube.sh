@@ -1,6 +1,6 @@
 #!/bin/bash
-MINIKUBE_MOUNT="/tmp/minikube/minik8mount/"
-CPUS="8"
+MINIKUBE_MOUNT="/mnt/depot/minikube/"
+CPUS="12"
 MEMORY="16096"
 HELM_REPO="epc"
 HELM_REPO_URL="https://helm.epc.ub.uu.se/"
