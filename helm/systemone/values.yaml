@@ -30,8 +30,9 @@ deploy:
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
 port:
-  apache: 30980
+  apache: 30982
 shibboleth:
+  entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile
 docker:
   rabbitmq: cora-docker-rabbitmq:1.3.0

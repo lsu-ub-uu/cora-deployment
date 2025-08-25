@@ -4,8 +4,9 @@ deploy:
 
 externalAccess:
   systemUrl: http://192.168.49.2:30982
-  #restUrl: http://192.168.49.2:30982/rest
-  #logoutUrl: http://login:8080/login/rest/authToken/
+shibboleth:
+  entityId: local-kub-entityId
+  domain: local-kub
 
 security:
   divaClientSecureSessionCookie: false
