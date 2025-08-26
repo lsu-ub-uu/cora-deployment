@@ -35,7 +35,7 @@ externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   divaClientBasePath: /divaclient
 port:
-  apache: 30980
+  apache: 30982
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile

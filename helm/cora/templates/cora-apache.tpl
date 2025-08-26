@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: credentials-read-only
           persistentVolumeClaim:
-            claimName: {{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
+            claimName: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
       imagePullSecrets:
       - name: cora-dockers
 

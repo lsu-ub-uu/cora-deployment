@@ -83,9 +83,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
+  name: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
   labels:
-    app: {{ .Values.shibboleth.domain }}-credentials-read-only-volume
+    app: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume
 spec:
   storageClassName: manual
   accessModes:

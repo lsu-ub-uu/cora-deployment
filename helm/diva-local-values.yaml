@@ -5,8 +5,8 @@ deploy:
 externalAccess:
   systemUrl: http://192.168.49.2:30982
 shibboleth:
-  entityId: local-kub-entityId
-  domain: local-kub
+  entityId: local-entityId
+  domain: local
 
 security:
   divaClientSecureSessionCookie: false

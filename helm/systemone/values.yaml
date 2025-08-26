@@ -30,7 +30,7 @@ deploy:
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
 port:
-  apache: 30982
+  apache: 30980
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile
