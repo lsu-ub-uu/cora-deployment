@@ -20,9 +20,9 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.divaclient }}
         env:
         - name: CORA_API_URL
-          value: "http://diva:8080/diva/rest"
+          value: "http://apache/rest"
         - name: CORA_LOGIN_URL
-          value: "http://login:8080/login/rest"
+          value: "http://apache/login/rest"
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
         - name: SESSION_SECURE
@@ -44,14 +44,12 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-divaclient
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-divaclient
   ports:
     - protocol: TCP
       port: 5173
       targetPort: 5173
-      nodePort:  {{ .Values.port.divaclient }}
 
 {{- end }}
 

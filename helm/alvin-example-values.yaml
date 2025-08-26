@@ -3,13 +3,7 @@ deploy:
   jsclient: false
 
 externalAccess:
-  loginPath: /alvin/login/rest/
-  systemUrl: https://cora.epc.ub.uu.se
-  logoutUrl: https://cora.epc.ub.uu.se/alvin/login/rest/authToken/
-
-port:
-  rest: 31081
-  login: 31181
-  jsclient: 31281
-  idplogin: 31381
-  fitnesse: 31581
+  systemUrl: http://192.168.49.2:30981
+shibboleth:
+  entityId: local-kub-entityId
+  domain: local-kub

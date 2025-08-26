@@ -70,7 +70,7 @@ spec:
   claimRef:
     namespace: systemone
     name: systemone-archive-read-only-volume-claim
-    
+
 ---
 
 apiVersion: v1
@@ -91,7 +91,7 @@ spec:
   claimRef:
     namespace: systemone
     name: systemone-converted-files-read-write-volume-claim
-    
+
 ---
 
 apiVersion: v1
@@ -112,4 +112,25 @@ spec:
   claimRef:
     namespace: systemone
     name: systemone-converted-files-read-only-volume-claim
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: systemone-local-credentials-read-only-volume
+  labels:
+    type: local
+    app: systemone-local-credentials
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: /mnt/minikube/systemone/certificates/shibboleth/local
+  claimRef:
+    namespace: systemone
+    name: systemone-local-credentials-read-only-volume-claim
 ---

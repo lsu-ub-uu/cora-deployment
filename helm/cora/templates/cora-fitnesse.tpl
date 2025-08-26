@@ -21,6 +21,16 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fitnesse }}
         ports:
         - containerPort: 8090
+        env:
+        - name: BASE_URL
+          value: http://apache/
+        - name: LOGIN_URL
+          value: http://apache/login/
+        - name: IDP_LOGIN_URL
+          value: http://idplogin:8080/idplogin/
+          # Gatekeeper should not be mapped in apache, therefore gatekeeper internal pod alias is used.
+        - name: GATEKEEPER_SERVER_URL
+          value: http://gatekeeper:8080/gatekeeperserver/
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
           name: archive-read-only
@@ -45,13 +55,11 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-fitnesse
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-fitnesse
   ports:
     - protocol: TCP
       port: 8090
       targetPort: 8090
-      nodePort:  {{ .Values.port.fitnesse }}
 {{- end }}
 {{- end }}

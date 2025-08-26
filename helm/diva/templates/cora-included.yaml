@@ -26,4 +26,6 @@
 ---
 {{ include "cora.binaryconverter" . }}
 ---
+{{ include "cora.apache" . }}
+---
 {{ include "cora.job-index" . }}

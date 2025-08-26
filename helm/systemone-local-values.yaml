@@ -1,0 +1,8 @@
+deploy:
+  fitnesse: true
+
+externalAccess:
+  systemUrl: http://192.168.49.2:30980
+shibboleth:
+  entityId: local-entityId
+  domain: local

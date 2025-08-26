@@ -28,15 +28,12 @@ deploy:
   fitnesse: false
   jsclient: true
 externalAccess:
-  loginPath: /login/rest/
-  systemUrl: https://cora.epc.ub.uu.se
-  logoutUrl: http://login:8080/login/rest/authToken/
+  systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
 port:
-  rest: 30080
-  login: 30180
-  jsclient: 30280
-  idplogin: 30380
-  fitnesse: 30580
+  apache: 30980
+shibboleth:
+  entityId: mustBeSetOnSpecificEnvironmentValuesFile
+  domain: mustBeSetOnSpecificEnvironmentValuesFile
 docker:
   rabbitmq: cora-docker-rabbitmq:1.3.0
   fedora: cora-docker-fedora:1.2.0
@@ -46,8 +43,9 @@ docker:
   binaryconverter: cora-docker-binaryconverter:1.4.0
   gatekeeper: cora-docker-gatekeeper:1.1.0
   login: cora-docker-login:1.2.0
-  jsclient: cora-docker-jsclient:1.5.0
+  jsclient: cora-docker-jsclient:1.6-SNAPSHOT
   postgresql: systemone-docker-postgresql:1.11.0
-  fitnesse: systemone-docker-fitnesse:1.10.0
-  rest: systemone-docker:1.4.0
+  fitnesse: systemone-docker-fitnesse:1.11-SNAPSHOT
+  rest: systemone-docker:1.5-SNAPSHOT
+  apache: systemone-docker-apache:1.1.1-SNAPSHOT
   jobindex: cora-docker-console:1.0.0

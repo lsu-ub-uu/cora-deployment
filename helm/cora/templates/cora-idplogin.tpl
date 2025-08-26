@@ -26,7 +26,8 @@ spec:
         - name: mainSystemDomain
           value: {{ .Values.externalAccess.systemUrl }}
         - name: tokenLogoutUrl
-          value: {{ .Values.externalAccess.logoutUrl }}
+        #  value: {{ .Values.externalAccess.logoutUrl }}
+          value: {{ .Values.externalAccess.systemUrl }}/login/rest/authToken/
         - name: JAVA_OPTS
           value: -Dmain.system.domain=${mainSystemDomain} -Dtoken.logout.url=${tokenLogoutUrl}        
       imagePullSecrets:
@@ -39,12 +40,10 @@ kind: Service
 metadata:
   name: idplogin
 spec:
-  type: NodePort
   selector:
     app: {{ .Values.system.name }}-idplogin
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort:  {{ .Values.port.idplogin }}
 {{- end -}}
