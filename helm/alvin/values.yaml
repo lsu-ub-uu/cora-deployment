@@ -32,6 +32,8 @@ externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   systemHost: mustBeSetOnSpecificEnvironmentValuesFile
   alvinClientPath: /alvinclient
+  restToPathSystem: /rest/
+  iiifToPathSystem: /iiif/
 port:
   apache: 30981
 shibboleth:

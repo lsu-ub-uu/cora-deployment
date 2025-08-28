@@ -34,6 +34,8 @@ security:
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   divaClientBasePath: /divaclient
+  restToPathSystem: /rest/
+  iiifToPathSystem: /iiif/
 port:
   apache: 30982
 shibboleth:

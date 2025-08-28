@@ -3,8 +3,6 @@ deploy:
 
 externalAccess:
   systemUrl: http://192.168.49.2:30980
-  restToPathSystem: /rest
-  iiifToPathSystem: /iiif
 shibboleth:
   entityId: local-entityId
   domain: local

@@ -29,6 +29,8 @@ deploy:
   jsclient: true
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
+  restToPathSystem: /rest/
+  iiifToPathSystem: /iiif/
 port:
   apache: 30980
 shibboleth:
