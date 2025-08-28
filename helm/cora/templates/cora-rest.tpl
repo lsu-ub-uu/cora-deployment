@@ -24,6 +24,13 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.rest }}
         ports:
         - containerPort: 8080
+        env:
+        - name: restToPathSystem
+          value: {{ .Values.externalAccess.restToPathSystem }}
+        - name: iiifToPathSystem
+          value: {{ .Values.externalAccess.iiifToPathSystem }}
+        - name: JAVA_OPTS
+          value: -Drest.to.path.system=${restToPathSystem} -Diiif.to.path.system=${iiifToPathSystem}        
         volumeMounts:
         - mountPath: "/mnt/data/basicstorage"
           name: converted-files-read-write
