@@ -25,9 +25,9 @@ spec:
                   name: {{ .Values.system.name }}-secret
                   key: indexAppToken
             - name: RECORDTYPE_URL
-              value: "http://apache/rest/record/recordType"
+              value: {{ .Values.externalAccess.systemUrl }}/rest/record/recordType
             - name: LOGIN_URL
-              value: "http://apache/login/rest/apptoken"
+              value: {{ .Values.externalAccess.systemUrl }}/login/rest/apptoken
           volumeMounts:
             - name: script-volume
               mountPath: /scripts
