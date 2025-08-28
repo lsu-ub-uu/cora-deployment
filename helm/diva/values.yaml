@@ -46,7 +46,7 @@ docker:
   idplogin: cora-docker-idplogin:1.2.0
   iip: cora-docker-iipimageserver:1.2.0
   login: cora-docker-login:1.2.0
-  jsclient: cora-docker-jsclient:1.6.0
+  jsclient: cora-docker-jsclient:1.7.0
   binaryconverter: cora-docker-binaryconverter:1.4.0
   postgresql: diva-docker-postgresql:1.26.0
   fitnesse: diva-cora-docker-fitnesse:1.8.0
