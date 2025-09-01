@@ -130,6 +130,6 @@ spec:
   hostPath:
     path: /mnt/minikube/diva/certificates/shibboleth/local
   claimRef:
-    namespace: systemone
+    namespace: diva
     name: diva-local-credentials-read-only-volume-claim
 ---
