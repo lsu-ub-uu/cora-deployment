@@ -131,6 +131,6 @@ spec:
   hostPath:
     path: /mnt/minikube/alvin/certificates/shibboleth/local
   claimRef:
-    namespace: systemone
+    namespace: alvin
     name: alvin-local-credentials-read-only-volume-claim
 ---
