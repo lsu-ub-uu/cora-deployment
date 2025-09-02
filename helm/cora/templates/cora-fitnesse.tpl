@@ -22,10 +22,17 @@ spec:
         ports:
         - containerPort: 8090
         env:
+        - name: CONTEXT_ROOT_ARG
+          value: {{ .Values.fitnesse.contextRoot }}
         - name: BASE_URL
-          value: http://apache/
+          value: {{ .Values.fitnesse.baseUrl }}
+#          value: http://apache/
         - name: LOGIN_URL
-          value: http://apache/login/
+          value: {{ .Values.fitnesse.loginUrl }}
+#          value: http://apache/login/
+          # The internal apache vhost config has a routing for idplogin which requires credentials 
+          # and since we do not have access to shibboleth in fitnesse, the solution is to by pass 
+          # the routing in the apache and call idplogin internally.
         - name: IDP_LOGIN_URL
           value: http://idplogin:8080/idplogin/
           # Gatekeeper should not be mapped in apache, therefore gatekeeper internal pod alias is used.
@@ -44,9 +51,10 @@ spec:
         - name: converted-files-read-write
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-converted-files-read-only-volume-claim
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
-
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

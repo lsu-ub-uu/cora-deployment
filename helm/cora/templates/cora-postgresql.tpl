@@ -46,8 +46,10 @@ spec:
         - name: postgresql-volume
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-postgres-volume-claim
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

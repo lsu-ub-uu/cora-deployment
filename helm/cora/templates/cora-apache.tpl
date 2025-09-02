@@ -28,8 +28,10 @@ spec:
         - name: credentials-read-only
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

@@ -1,5 +1,7 @@
 dockerRepository:
   url: docker.epc.ub.uu.se/
+  useImagePullSecrets: false
+  imagePullSecrets: someImagePullSecret
 initContainer:
   waitForDb:
     - name: init-wait-for-db
@@ -16,4 +18,3 @@ initContainer:
         - -c
         - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
-

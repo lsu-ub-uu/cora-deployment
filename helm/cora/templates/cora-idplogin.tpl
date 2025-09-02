@@ -29,8 +29,10 @@ spec:
           value: {{ .Values.externalAccess.systemUrl }}/login/rest/authToken/
         - name: JAVA_OPTS
           value: -Dmain.system.domain=${mainSystemDomain} -Dtoken.logout.url=${tokenLogoutUrl}        
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

@@ -60,8 +60,10 @@ spec:
         - name: converted-files-read-write
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-converted-files-read-write-volume-claim
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 ---
 {{- end }}
 

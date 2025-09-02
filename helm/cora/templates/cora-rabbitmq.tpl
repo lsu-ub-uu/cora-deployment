@@ -20,8 +20,10 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.rabbitmq }}
         ports:
         - containerPort: 5672
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

@@ -39,9 +39,10 @@ spec:
               key: POSTGRES_PASSWORD
         - name: JAVA_OPTS
           value: -Dlogin.public.path.to.system=$(loginPublicPathToSystem) -Ddburl=$(POSTGRES_URL) -Ddbusername=$(POSTGRES_USER) -Ddbpassword=$(POSTGRES_PASSWORD)
-        
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

@@ -21,8 +21,10 @@ spec:
         ports:
         - containerPort: 8983
         args: ["solr-precreate", "coracore", "/opt/solr/server/solr/configsets/coradefaultcore"]
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 
