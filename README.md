@@ -22,7 +22,7 @@ helm repo update
 kubectl create namespace systemone-epc
 kubectl apply -f systemone-secret.yaml --namespace=systemone-epc
 kubectl apply -f systemone-minikube-persistent-volumes.yaml
-helm install my20250527systemone epc/systemone --namespace systemone-epc --set deploy.fitnesse=true
+helm install my20250903systemone epc/systemone --namespace systemone-epc -f systemone-local-values.yaml
 
 #or search and deploy specific version
 helm search repo epc
