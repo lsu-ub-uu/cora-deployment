@@ -53,5 +53,5 @@ docker:
   postgresql: systemone-docker-postgresql:1.12.0
   fitnesse: systemone-docker-fitnesse:1.12.0
   rest: systemone-docker:1.6.0
-  apache: systemone-docker-apache:1.6.2-SNAPSHOT
+  apache: systemone-docker-apache:1.6.0
   jobindex: cora-docker-console:1.0.0
