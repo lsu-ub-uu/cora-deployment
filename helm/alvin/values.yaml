@@ -31,7 +31,7 @@ deploy:
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   systemHost: mustBeSetOnSpecificEnvironmentValuesFile
-  alvinClientPath: /alvinclient
+  alvinClientPath: alvinclient
   restToPathSystem: /rest/
   iiifToPathSystem: /iiif/
   loginPathSystem: /login/rest/

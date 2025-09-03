@@ -23,6 +23,9 @@ spec:
         env:
         - name: FITNESSE_CONTEXT_ROOT_ARG
           value: {{ .Values.fitnesse.contextRoot }}
+          # Specific for alvin, it might be moved
+        - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
+          value: {{ .Values.externalAccess.alvinClientPath }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
           name: credentials-read-only
