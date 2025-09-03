@@ -20,6 +20,9 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.apache }}
         ports:
         - containerPort: 80
+        env:
+        - name: FITNESSE_CONTEXT_ROOT_ARG
+          value: {{ .Values.fitnesse.contextRoot }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
           name: credentials-read-only
