@@ -26,7 +26,7 @@ helm install my20250527systemone epc/systemone --namespace systemone-epc --set d
 
 #or search and deploy specific version
 helm search repo epc
-helm install my20250527systemone epc/systemone --namespace systemone-epc --version 0.2.14 --set deploy.fitnesse=true
+helm install my20250903systemone epc/systemone --namespace systemone-epc --version 0.2.14 -f systemone-local-values.yaml
 ```
 
 ## Run systemOne locally using minicube, with fitnesse and jsclient
