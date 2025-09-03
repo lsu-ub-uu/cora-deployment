@@ -36,6 +36,7 @@ externalAccess:
   divaClientBasePath: /divaclient
   restToPathSystem: /rest/
   iiifToPathSystem: /iiif/
+  loginPathSystem: /login/rest/
 port:
   apache: 30982
 shibboleth:
