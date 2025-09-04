@@ -26,6 +26,9 @@ spec:
           # Specific for alvin, it might be moved
         - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
           value: {{ .Values.externalAccess.alvinClientPath }}
+           # Specific for diva, it might be moved
+        - name: DIVA_CLIENT_CONTEXT_ROOT_ARG
+          value: {{ .Values.externalAccess.divaClientBasePath }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
           name: credentials-read-only
