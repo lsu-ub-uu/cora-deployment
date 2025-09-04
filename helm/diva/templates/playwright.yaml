@@ -21,7 +21,7 @@ spec:
         env:
         - name: TARGET_URL
           value: {{- if .Values.security.divaClientSecureSessionCookie }}
-            "{{ .Values.externalAccess.systemUrl }}/{{ .Values.externalAccess.divaClientBasePath }}"
+            "{{ .Values.externalAccess.systemUrl }}{{ .Values.externalAccess.divaClientBasePath }}"
           {{- else }}
             "http://diva-divaclient:5173/divaclient"
           {{- end }}

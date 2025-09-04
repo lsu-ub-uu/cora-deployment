@@ -1,9 +1,0 @@
-deploy:
-  fitnesse: true
-  jsclient: false
-
-externalAccess:
-  systemUrl: http://192.168.49.2:30981
-shibboleth:
-  entityId: local-kub-entityId
-  domain: local-kub

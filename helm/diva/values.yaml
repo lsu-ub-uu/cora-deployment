@@ -33,7 +33,7 @@ security:
   divaClientSecureSessionCookie: true
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
-  divaClientBasePath: divaclient
+  divaClientBasePath: /divaclient
   restToPathSystem: /rest/
   iiifToPathSystem: /iiif/
   loginPathSystem: /login/rest/
