@@ -23,9 +23,9 @@ spec:
         env:
         - name: FITNESSE_CONTEXT_ROOT_ARG
           value: {{ .Values.fitnesse.contextRoot }}
-          # Specific for alvin, it might be moved
-        - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
-          value: {{ .Values.externalAccess.alvinClientPath }}
+        {{- if .Values.apache.useExtraEnvs }}
+        {{- toYaml .Values.apache.extraEnvs | nindent 8 }}
+        {{- end }}
            # Specific for diva, it might be moved
         - name: DIVA_CLIENT_CONTEXT_ROOT_ARG
           value: {{ .Values.externalAccess.divaClientBasePath }}
