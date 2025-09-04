@@ -24,7 +24,7 @@ spec:
         - name: CORA_LOGIN_URL
           value: "http://apache/login/rest"
         - name: BASE_PATH
-          value: {{ .Values.externalAccess.divaClientBasePath}}
+          value: /{{ .Values.externalAccess.divaClientBasePath}}
         - name: SESSION_SECURE
           value: {{ .Values.security.divaClientSecureSessionCookie | quote }}
         - name: SESSION_SECRETS

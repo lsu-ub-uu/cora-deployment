@@ -6,7 +6,7 @@ externalAccess:
   loginPath: /diva/login/rest/
   systemUrl: https://cora.epc.ub.uu.se
   logoutUrl: https://cora.epc.ub.uu.se/diva/login/rest/authToken/
-  divaClientBasePath: /divaclient
+  divaClientBasePath: divaclient
 
 port:
   rest: 31082
