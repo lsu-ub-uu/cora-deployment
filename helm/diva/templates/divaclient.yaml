@@ -34,8 +34,10 @@ spec:
               key: divaClientSessionCookieSecrets
         ports:
         - containerPort: 5173
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
-      - name: cora-dockers
+      - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
+      {{- end }}
 
 ---
 

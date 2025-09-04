@@ -2,7 +2,8 @@ deploy:
   fitnesse: true
 
 externalAccess:
-  systemHost: 192.168.49.2
   systemUrl: http://192.168.49.2:30981
+django:
+  allowedHosts: "*"
 shibboleth:
   domain: local
