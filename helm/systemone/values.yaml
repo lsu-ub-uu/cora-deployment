@@ -34,6 +34,8 @@ externalAccess:
   loginPathSystem: /login/rest/
 port:
   apache: 30980
+apache:
+  useExtraEnvs: false
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile

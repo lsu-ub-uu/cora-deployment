@@ -39,6 +39,11 @@ externalAccess:
   loginPathSystem: /login/rest/
 port:
   apache: 30982
+apache:
+  useExtraEnvs: true
+  extraEnvs: 
+    - name: DIVA_CLIENT_CONTEXT_ROOT_ARG
+      value: divaclient
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile

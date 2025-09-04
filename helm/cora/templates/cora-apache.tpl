@@ -26,9 +26,6 @@ spec:
         {{- if .Values.apache.useExtraEnvs }}
         {{- toYaml .Values.apache.extraEnvs | nindent 8 }}
         {{- end }}
-           # Specific for diva, it might be moved
-        - name: DIVA_CLIENT_CONTEXT_ROOT_ARG
-          value: {{ .Values.externalAccess.divaClientBasePath }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
           name: credentials-read-only
