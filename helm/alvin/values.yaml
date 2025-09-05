@@ -38,10 +38,9 @@ port:
   apache: 30981
 apache:
   useExtraEnvs: true
-  extraEnvs: 
+  extraEnvs:
     - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
       value: alvinclient
-  
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile
