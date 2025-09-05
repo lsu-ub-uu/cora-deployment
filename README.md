@@ -57,11 +57,11 @@ get your minikube ip: minikube ip
 
 This should start a local version of systemOne accessable at:<br>
 
-- rest: http://192.168.49.2:30080/systemone/rest/
-- login: localhost:30180/
-- jsClient: http://192.168.49.2:30280/jsclient/
-- idplogin: localhost:30380/login
-- fitnesse: http://192.168.49.2:30580/systemone/fitnesse/
+- rest: http://192.168.49.2:30980/rest/
+- login: http://192.168.49.2:30980/login/
+- jsClient: http://192.168.49.2:30980/jsclient/
+- idplogin: http://192.168.49.2:30980/idplogin/
+- fitnesse: http://192.168.49.2:30980/fitnesse/
 
 ### to remove and start over
 
@@ -101,12 +101,12 @@ get your minikube ip: minikube ip
 
 This should start a local version of alvin accessable at:<br>
 
-- rest: http://192.168.49.2:30081/alvin/rest/
-- login: localhost:30181/
-- jsClient: http://192.168.49.2:30281/jsclient/
-- idplogin: localhost:30381/login
-- fitnesse: http://192.168.49.2:30581/alvin/fitnesse/
-- alvinclient: http://192.168.49.2:30681/alvin/alvinclient
+- rest: http://192.168.49.2:30981/rest/
+- login: http://192.168.49.2:30981/login/
+- jsClient: http://192.168.49.2:30981/jsclient/
+- idplogin: http://192.168.49.2:30981/idplogin
+- fitnesse: http://192.168.49.2:30981/fitnesse/
+- alvinclient: http://192.168.49.2:30981/alvinclient
 
 
 ### to remove and start over
@@ -147,12 +147,12 @@ get your minikube ip: minikube ip
 
 This should start a local version of diva accessable at:<br>
 
-- rest: http://192.168.49.2:30082/diva/rest/
-- login: localhost:30182/
-- jsClient: http://192.168.49.2:30282/jsclient/
-- idplogin: localhost:30382/login
-- fitnesse: http://192.168.49.2:30582/diva/fitnesse/
-- divaclient: http://192.168.49.2:30682/divaclient
+- rest: http://192.168.49.2:30982/rest/
+- login: http://192.168.49.2:30982/login/
+- jsClient: http://192.168.49.2:30982/jsclient/
+- idplogin: http://192.168.49.2:30982/idplogin/
+- fitnesse: http://192.168.49.2:30982/fitnesse/
+- divaclient: http://192.168.49.2:30982/divaclient
 - playwright: http://192.168.49.2:30782
 
 ### Running Playwright locally
