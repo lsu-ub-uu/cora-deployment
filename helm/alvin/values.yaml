@@ -62,7 +62,7 @@ docker:
   postgresql: alvin-docker-postgresql:1.18.0
   fitnesse: alvin-cora-docker-fitnesse:1.10.0
   gatekeeper: alvin-docker-gatekeeper:1.2.0
-  rest: alvin-docker-cora:1.6.0
+  rest: alvin-docker-cora:1.7.0
   jobindex: cora-docker-console:1.0.0
   alvinclient: alvin-docker-alvinclient:1.6.0
   apache: alvin-docker-apache:1.7.0
