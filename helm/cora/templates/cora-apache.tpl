@@ -27,7 +27,7 @@ spec:
         {{- toYaml .Values.apache.extraEnvs | nindent 8 }}
         {{- end }}
         volumeMounts:
-        - mountPath: "/etc/shibboleth/credentials"
+        - mountPath: "/etc/shibboleth"
           name: credentials-read-only
           readOnly: true
       volumes:
