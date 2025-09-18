@@ -23,10 +23,6 @@ spec:
         env:
         - name: VERBOSITY
           value: "0"
-        - name: FILESYSTEM_PREFIX
-          value: "/tmp/sharedFileStorage/{{ .Values.system.pathName }}/streams/"
-        - name: FILESYSTEM_SUFFIX
-          value: "-jp2"
         - name: CORS
           value: "*"
         - name: MAX_IMAGE_CACHE_SIZE
