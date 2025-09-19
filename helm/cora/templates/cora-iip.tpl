@@ -28,7 +28,7 @@ spec:
         - name: MAX_IMAGE_CACHE_SIZE
           value: "1000"
         volumeMounts:
-        - mountPath: "/tmp/sharedFileStorage/{{ .Values.system.pathName }}"
+        - mountPath: "/mnt/data/basicstorage"
           name: converted-files-read-only
       volumes:
         - name: converted-files-read-only
