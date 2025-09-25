@@ -23,6 +23,8 @@ spec:
           value: "http://apache/rest"
         - name: CORA_LOGIN_URL
           value: "http://apache/login/rest"
+        - name: CORA_EXTERNAL_SYSTEM_URL
+          value: {{ .Values.externalAccess.systemUrl }}
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
         - name: SESSION_SECURE
