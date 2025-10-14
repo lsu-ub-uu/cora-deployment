@@ -59,7 +59,7 @@ docker:
   login: cora-docker-login:1.2.0
   jsclient: cora-docker-jsclient:1.17.0
   binaryconverter: cora-docker-binaryconverter:1.6.0
-  postgresql: alvin-docker-postgresql:1.32.0
+  postgresql: alvin-docker-postgresql:1.33.0
   fitnesse: alvin-cora-docker-fitnesse:1.13.0
   gatekeeper: alvin-docker-gatekeeper:1.2.0
   rest: alvin-docker-cora:1.10.0
