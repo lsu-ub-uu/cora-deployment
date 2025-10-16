@@ -34,6 +34,10 @@ spec:
             secretKeyRef:
               name: {{ .Values.system.name }}-secret
               key: divaClientSessionCookieSecrets
+        {{- if .Values.security.divaClientAppTokenUsers }}
+        - name: APP_TOKEN_USERS
+          value: {{ .Values.security.divaClientAppTokenUsers | toJson | quote }}
+        {{- end }}
         ports:
         - containerPort: 5173
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
