@@ -49,7 +49,7 @@ docker:
   solr: cora-docker-solr:1.2.0
   idplogin: cora-docker-idplogin:1.4.0
   iip: cora-docker-iipimageserver:1.2.0
-  binaryconverter: cora-docker-binaryconverter:1.7.0
+  binaryconverter: cora-docker-binaryconverter:1.8.0
   gatekeeper: cora-docker-gatekeeper:1.2.0
   login: cora-docker-login:1.3.0
   jsclient: cora-docker-jsclient:1.22.0
