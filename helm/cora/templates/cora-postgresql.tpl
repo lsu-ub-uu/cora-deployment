@@ -40,7 +40,7 @@ spec:
               name: {{ .Values.system.name }}-config
               key: dataDividers
         volumeMounts:
-        - mountPath: "/var/lib/postgresql/data"
+        - mountPath: "/var/lib/postgresql"
           name: postgresql-volume
       volumes:
         - name: postgresql-volume

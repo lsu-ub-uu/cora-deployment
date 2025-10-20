@@ -42,6 +42,7 @@ helm repo update
 cd helm
 
 # Update dependencies
+helm dependency build cora/
 helm dependency update "${SYSTEM}/"
 
 # Create namespace if not exists
