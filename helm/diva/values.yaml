@@ -60,11 +60,11 @@ docker:
   login: cora-docker-login:1.3.0
   jsclient: cora-docker-jsclient:1.23.0
   binaryconverter: cora-docker-binaryconverter:1.8.0
-  postgresql: diva-docker-postgresql:1.85.0
+  postgresql: diva-docker-postgresql:1.86.0
   fitnesse: diva-cora-docker-fitnesse:1.18.0
   gatekeeper: diva-docker-gatekeeper:1.3.0
   rest: diva-docker-cora:1.11.0
   divaclient: diva-docker-divaclient:1.74.0
-  apache: diva-docker-apache:1.10.0
+  apache: diva-docker-apache:1.11.0
   jobindex: cora-docker-console:1.0.0
   playwright: diva-docker-playwright:1.31.0
