@@ -6,4 +6,3 @@ data:
   postgresql-url: diva-postgresql
   solr-url: solr-service
   fedora-url: fedora-service
-  dataDividers: "cora jsClient diva divaPreview divaPre divaProduction divaClient"

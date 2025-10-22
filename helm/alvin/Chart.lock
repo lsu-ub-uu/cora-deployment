@@ -1,6 +1,6 @@
 dependencies:
 - name: cora
   repository: file://../cora
-  version: 0.2.0
-digest: sha256:b345d3f727579463e7af53ccd77ba903135b33af723a41d393a8e5a38099c72e
-generated: "2025-08-13T13:32:24.538388563+02:00"
+  version: 0.4.0
+digest: sha256:ced67f906f03fb7ff4b21c67fa5d5eeac92cd301eb5b0b87a44f681192912859
+generated: "2025-10-22T11:10:16.491319484+02:00"

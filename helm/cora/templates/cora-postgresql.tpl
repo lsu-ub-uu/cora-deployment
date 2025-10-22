@@ -35,10 +35,7 @@ spec:
               name: {{ .Values.system.name }}-secret
               key: POSTGRES_PASSWORD
         - name: DATA_DIVIDERS
-          valueFrom:
-            configMapKeyRef:
-              name: {{ .Values.system.name }}-config
-              key: dataDividers
+          value: {{ .Values.data.dataDividers }}
         volumeMounts:
         - mountPath: "/var/lib/postgresql"
           name: postgresql-volume

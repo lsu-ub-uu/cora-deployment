@@ -29,6 +29,10 @@ deploy:
   jsclient: true
   divaclient: true
   playwright: false
+  
+data:
+  dataDividers: "cora jsClient diva"
+
 security:
   divaClientSecureSessionCookie: true
 externalAccess:

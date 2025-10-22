@@ -6,4 +6,3 @@ data:
   postgresql-url: systemone-postgresql
   solr-url: solr-service
   fedora-url: fedora-service
-  dataDividers: "cora jsClient systemOne testSystem"

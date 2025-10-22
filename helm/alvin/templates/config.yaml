@@ -6,4 +6,3 @@ data:
   postgresql-url: alvin-postgresql
   solr-url: solr-service
   fedora-url: fedora-service
-  dataDividers: "cora jsClient alvin alvinPreview alvinTestSystem alvinProduction alvinData"

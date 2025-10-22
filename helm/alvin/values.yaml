@@ -28,6 +28,9 @@ deploy:
   fitnesse: false
   jsclient: true
   alvinclient: true
+data:
+  dataDividers: "cora jsClient alvin"
+
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   restToPathSystem: /rest/

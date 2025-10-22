@@ -27,6 +27,10 @@ system:
 deploy:
   fitnesse: false
   jsclient: true
+  
+data:
+  dataDividers: "cora jsClient systemOne"
+
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   restToPathSystem: /rest/
