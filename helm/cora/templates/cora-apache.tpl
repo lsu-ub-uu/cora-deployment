@@ -33,7 +33,7 @@ spec:
       volumes:
         - name: credentials-read-write
           persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-credentials-read-only-volume-claim
+            claimName: {{ .Values.system.name }}-credentials-read-write-volume-claim
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
