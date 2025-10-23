@@ -28,10 +28,10 @@ spec:
         {{- end }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
-          name: credentials-read-only
+          name: credentials-read-write
           readOnly: true
       volumes:
-        - name: credentials-read-only
+        - name: credentials-read-write
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume-claim
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}

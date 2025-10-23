@@ -9,7 +9,69 @@
 #pvcConvertedFilesReadOnly #ReadOnlyMany
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: systemone-postgres-volume-claim
+  labels:
+    app: systemone-postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
 
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: systemone-archive-read-write-volume-claim
+  labels:
+    app: systemone-archive
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: systemone-converted-files-read-write-volume-claim
+  labels:
+    app: systemone-converted-files
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: systemone-local-credentials-read-write-volume-claim
+  labels:
+    app: systemone-local-credentials-read-write-volume
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -53,26 +115,6 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: systemone-archive-read-only-volume
-  labels:
-    type: local
-    app: systemone-archive
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadOnlyMany
-  hostPath:
-    path: /mnt/minikube/systemone/archive
-  claimRef:
-    namespace: systemone
-    name: systemone-archive-read-only-volume-claim
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
   name: systemone-converted-files-volume
   labels:
     type: local
@@ -93,38 +135,18 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: systemone-converted-files-read-only-volume
+  name: systemone-local-credentials-read-write-volume
   labels:
     type: local
-    app: systemone-converted-files
+    app: systemone-credentials
 spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadOnlyMany
-  hostPath:
-    path: /mnt/minikube/systemone/convertedFiles
-  claimRef:
-    namespace: systemone
-    name: systemone-converted-files-read-only-volume-claim
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: systemone-local-credentials-read-only-volume
-  labels:
-    type: local
-    app: systemone-local-credentials
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadOnlyMany
+    - ReadWriteMany
   hostPath:
     path: /mnt/minikube/systemone/certificates/shibboleth/local
   claimRef:
     namespace: systemone
-    name: systemone-local-credentials-read-only-volume-claim
+    name: systemone-local-credentials-read-write-volume-claim
 ---

@@ -29,11 +29,11 @@ spec:
           value: "1000"
         volumeMounts:
         - mountPath: "/mnt/data/basicstorage"
-          name: converted-files-read-only
+          name: converted-files-read-write
       volumes:
-        - name: converted-files-read-only
+        - name: converted-files-read-write
           persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-converted-files-read-only-volume-claim
+            claimName: {{ .Values.system.name }}-converted-files-read-write-volume-claim
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}

@@ -36,7 +36,7 @@ cd helm
 helm dependency update systemone/
 kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
-kubectl apply -f systemone-minikube-persistent-volumes.yaml
+kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace=systemone
 helm install my20250903systemone systemone --namespace systemone -f systemone-local-values.yaml
 ```
 
@@ -78,7 +78,7 @@ cd helm
 helm dependency update alvin/
 kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
-kubectl apply -f alvin-minikube-persistent-volumes.yaml
+kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace=alvin
 helm install my20250526alvin alvin --namespace alvin -f alvin-local-values.yaml
 ```
 
@@ -124,7 +124,7 @@ cd helm
 helm dependency update diva/
 kubectl create namespace diva
 kubectl apply -f diva-secret.yaml --namespace=diva
-kubectl apply -f diva-minikube-persistent-volumes.yaml
+kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace=diva
 helm install my20250523diva diva --namespace diva -f diva-local-values.yaml
 ```
 

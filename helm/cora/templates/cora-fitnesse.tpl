@@ -40,17 +40,17 @@ spec:
           value: http://gatekeeper:8080/gatekeeperserver/
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
-          name: archive-read-only
+          name: archive-read-write
           readOnly: true
         - mountPath: "/tmp/sharedFileStorage/{{ .Values.system.pathName }}"
           name: converted-files-read-write
       volumes:
-        - name: archive-read-only
+        - name: archive-read-write
           persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-archive-read-only-volume-claim
+            claimName: {{ .Values.system.name }}-archive-read-write-volume-claim
         - name: converted-files-read-write
           persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-converted-files-read-only-volume-claim
+            claimName: {{ .Values.system.name }}-converted-files-read-write-volume-claim
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
