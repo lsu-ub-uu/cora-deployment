@@ -7,7 +7,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-postgres
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -23,7 +22,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-archive
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -39,7 +37,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-archive-read-only-volume
 spec:
-  storageClassName: manual
   accessModes:
     - ReadOnlyMany
   resources:
@@ -55,7 +52,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-converted-files
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -71,7 +67,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-converted-files-read-only-volume
 spec:
-  storageClassName: manual
   accessModes:
     - ReadOnlyMany
   resources:
@@ -87,7 +82,6 @@ metadata:
   labels:
     app: {{ .Values.system.name }}-{{ .Values.shibboleth.domain }}-credentials-read-only-volume
 spec:
-  storageClassName: manual
   accessModes:
     - ReadOnlyMany
   resources:
