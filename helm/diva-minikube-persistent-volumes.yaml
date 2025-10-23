@@ -59,9 +59,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: diva-local-credentials-read-write-volume-claim
+  name: diva-credentials-read-write-volume-claim
   labels:
-    app: diva-local-credentials-read-write-volume
+    app: diva-credentials-read-write-volume
 spec:
   storageClassName: manual
   accessModes:
@@ -134,10 +134,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: diva-local-credentials-read-write-volume
+  name: diva-credentials-read-write-volume
   labels:
     type: local
-    app: diva-local-credentials
+    app: diva-credentials
 spec:
   capacity:
     storage: 20Gi
@@ -147,5 +147,5 @@ spec:
     path: /mnt/minikube/diva/certificates/shibboleth/local
   claimRef:
     namespace: diva
-    name: diva-local-credentials-read-write-volume-claim
+    name: diva-credentials-read-write-volume-claim
 ---

@@ -61,9 +61,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: alvin-local-credentials-read-write-volume-claim
+  name: alvin-credentials-read-write-volume-claim
   labels:
-    app: alvin-local-credentials-read-write-volume
+    app: alvin-credentials-read-write-volume
 spec:
   storageClassName: manual
   accessModes:
@@ -137,7 +137,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: alvin-local-credentials-read-write-volume
+  name: alvin-credentials-read-write-volume
   labels:
     type: local
     app: alvin-credentials
@@ -150,5 +150,5 @@ spec:
     path: /mnt/minikube/alvin/certificates/shibboleth/local
   claimRef:
     namespace: alvin
-    name: alvin-local-credentials-read-write-volume-claim
+    name: alvin-credentials-read-write-volume-claim
 ---

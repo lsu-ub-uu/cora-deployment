@@ -60,9 +60,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: systemone-local-credentials-read-write-volume-claim
+  name: systemone-credentials-read-write-volume-claim
   labels:
-    app: systemone-local-credentials-read-write-volume
+    app: systemone-credentials-read-write-volume
 spec:
   storageClassName: manual
   accessModes:
@@ -135,7 +135,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: systemone-local-credentials-read-write-volume
+  name: systemone-credentials-read-write-volume
   labels:
     type: local
     app: systemone-credentials
@@ -148,5 +148,5 @@ spec:
     path: /mnt/minikube/systemone/certificates/shibboleth/local
   claimRef:
     namespace: systemone
-    name: systemone-local-credentials-read-write-volume-claim
+    name: systemone-credentials-read-write-volume-claim
 ---
