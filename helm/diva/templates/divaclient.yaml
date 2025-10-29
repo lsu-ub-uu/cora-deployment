@@ -15,6 +15,18 @@ spec:
       labels:
         app: {{ .Values.system.name }}-divaclient
     spec:
+      initContainers:
+        - name: init-wait-for-cora-api
+          image: curlimages/curl:8.10.1
+          command:
+            - sh
+            - -c
+            - >
+              until [ "$(curl -s -o /dev/null -w '%{http_code}' http://apache/rest/record/recordType)" -eq 200 ];
+              do
+                echo "Waiting for Cora API...";
+                sleep 5;
+              done;
       containers:
       - name: {{ .Values.system.name }}-divaclient
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.divaclient }}
