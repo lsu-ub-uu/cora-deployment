@@ -69,4 +69,4 @@ docker:
   divaclient: diva-docker-divaclient:1.76.0
   apache: diva-docker-apache:1.11.0
   jobindex: cora-docker-console:1.0.0
-  playwright: diva-docker-playwright:1.32.0
+  playwright: diva-docker-playwright:1.33.0
