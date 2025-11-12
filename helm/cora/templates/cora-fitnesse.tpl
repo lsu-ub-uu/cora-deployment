@@ -38,6 +38,14 @@ spec:
           # Gatekeeper should not be mapped in apache, therefore gatekeeper internal pod alias is used.
         - name: GATEKEEPER_SERVER_URL
           value: http://gatekeeper:8080/gatekeeperserver/
+        - name: FITNESSE_ADMIN_LOGIN_ID
+          value: fitnesseAdmin@system.cora.uu.se
+        - name: FITNESSE_ADMIN_APP_TOKEN
+          value: 29c30232-d514-4559-b60b-6de47175c1df
+        - name: FITNESSE_USER_LOGIN_ID
+          value: fitnesseUser@system.cora.uu.se
+        - name: FITNESSE_USER_APP_TOKEN
+          value: bd699488-f9d1-419d-a79d-9fa8a0f3bb9d
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
           name: archive-read-write
