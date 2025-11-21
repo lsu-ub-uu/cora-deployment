@@ -1,5 +1,5 @@
 #!/bin/bash
-MINIKUBE_MOUNT="/mnt/depot/minikube/"
+MINIKUBE_MOUNT="/tmp/minikube-mount/"
 CPUS="12"
 MEMORY="16096"
 HELM_REPO="epc"
@@ -7,6 +7,7 @@ HELM_REPO_URL="https://helm.epc.ub.uu.se/"
 VALID_SYSTEMS=("systemone" "diva" "alvin")
 UNINSTALL="false"
 NO_CACHE="false"
+FRESH="false"
 CHART_LOCATION="helm"
 NAMESPACE=""
 
@@ -36,6 +37,7 @@ print_usage() {
     echo "Options:"
     echo "  --uninstall, -rm    Uninstall the specified system"
     echo "  --nocache, -nc      Prune all docker images inside minikube"
+    echo "  --fresh, -new       Delete existing minikube and create new for a clean install"
     exit 1
 }
 
@@ -60,6 +62,10 @@ script_setup() {
                 NO_CACHE="true"
                 shift
                 ;;
+             --fresh|-new)
+                FRESH="true"
+                shift
+                ;; 
             *)
                 print_usage
                 ;;
@@ -73,13 +79,18 @@ verify_system_selection() {
     exit 1
     fi
 
-    if [[ ! " ${VALID_SYSTEMS[@]} " =~ " $NAMESPACE " ]]; then
+    if [[ ! " ${VALID_SYSTEMS[*]} " =~ " $NAMESPACE " ]]; then
         print_warning "Error: Invalid system '$NAMESPACE'. Allowed values are: ${VALID_SYSTEMS[*]}"
         exit 1
     fi
 }
 
 prepare_for_installation() {
+     if [[ "$FRESH" == "true" ]]; then
+        print_step "Deleting existing minikube setup for a clean install..."
+        minikube delete
+    fi
+
     print_deployment_info
 
     # Start minikube
@@ -176,7 +187,7 @@ install_new_helm_chart() {
 
     # Install helm chart
     print_step "Installing helm chart for release $RELEASE_NAME"
-    helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml"
+    helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml" --atomic
 
     # Wait for pods to be ready
     print_step "Waiting for all pods in '$NAMESPACE' to be running..."
