@@ -1,12 +1,32 @@
 deploy:
   fitnesse: true
-
+  
 data:
   dataDividers: "cora jsClient alvin alvinPreview alvinTestSystem alvinProduction alvinData"
-
+  
 externalAccess:
   systemUrl: http://192.168.49.2:30981
+  restToPathSystem: /rest/
+  iiifToPathSystem: /iiif/
+  loginPathSystem: /login/rest/
+  alvinClientPath: alvinclient
+  
+apache:
+  useExtraEnvs: true
+  extraEnvs: 
+    - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
+      value: alvinclient
+      
 django:
   allowedHosts: "*"
+  
 shibboleth:
   domain: local
+  
+port:
+  apache: 30981
+  
+fitnesse:
+  contextRoot: fitnesse
+  baseUrl: https:///192.168.49.2:30981/
+  loginUrl: https://192.168.49.2:30981/login/
