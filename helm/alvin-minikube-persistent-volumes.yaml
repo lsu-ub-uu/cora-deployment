@@ -5,6 +5,7 @@ metadata:
   labels:
     app: alvin-postgres
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -20,6 +21,7 @@ metadata:
   labels:
     app: alvin-archive
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -35,6 +37,7 @@ metadata:
   labels:
     app: alvin-converted-files
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -50,6 +53,7 @@ metadata:
   labels:
     app: alvin-credentials-read-write-volume
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
