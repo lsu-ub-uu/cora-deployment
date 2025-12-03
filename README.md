@@ -21,12 +21,12 @@ helm repo update
 ```bash
 kubectl create namespace systemone-epc
 kubectl apply -f systemone-secret.yaml --namespace=systemone-epc
-kubectl apply -f systemone-minikube-persistent-volumes.yaml
-helm install my20250903systemone epc/systemone --namespace systemone-epc -f systemone-local-values.yaml
+kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone-epc
+helm install my20251203systemone epc/systemone --namespace systemone-epc -f systemone-local-values.yaml
 
 #or search and deploy specific version
 helm search repo epc
-helm install my20250903systemone epc/systemone --namespace systemone-epc --version 0.2.14 -f systemone-local-values.yaml
+helm install my20251203systemone epc/systemone --namespace systemone-epc --version 0.7.31 -f systemone-local-values.yaml
 ```
 
 ## Run systemOne locally using minicube, with fitnesse and jsclient
@@ -37,7 +37,7 @@ helm dependency update systemone/
 kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
 kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace=systemone
-helm install my20250903systemone systemone --namespace systemone -f systemone-local-values.yaml
+helm install my20251203systemone systemone --namespace systemone -f systemone-local-values.yaml
 ```
 
 you can watch the progress with:
@@ -79,7 +79,7 @@ helm dependency update alvin/
 kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
 kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace=alvin
-helm install my20250526alvin alvin --namespace alvin -f alvin-local-values.yaml
+helm install my20251203alvin alvin --namespace alvin -f alvin-local-values.yaml
 ```
 
 you can watch the progress with:
@@ -125,7 +125,7 @@ helm dependency update diva/
 kubectl create namespace diva
 kubectl apply -f diva-secret.yaml --namespace=diva
 kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace=diva
-helm install my20250523diva diva --namespace diva -f diva-local-values.yaml
+helm install my20251203diva diva --namespace diva -f diva-local-values.yaml
 ```
 
 you can watch the progress with:
