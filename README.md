@@ -19,10 +19,10 @@ helm repo update
 ## Install systemOne locally from epc repository
 
 ```bash
-kubectl create namespace systemone-epc
-kubectl apply -f systemone-secret.yaml --namespace=systemone-epc
-kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone-epc
-helm install my20251203systemone epc/systemone --namespace systemone-epc -f systemone-local-values.yaml
+kubectl create namespace systemone
+kubectl apply -f systemone-secret.yaml --namespace=systemone
+kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone
+helm install my20251203systemone epc/systemone --namespace systemone -f systemone-local-values.yaml
 
 #or search and deploy specific version
 helm search repo epc
