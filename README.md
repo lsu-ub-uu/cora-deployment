@@ -19,15 +19,13 @@ helm repo update
 ## Install systemOne using helm, from epc repository
 
 ```bash
+helm repo update
 kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
 kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone
-helm install my20251203systemone epc/systemone --namespace systemone -f systemone-local-values.yaml
 
+helm install my20251203systemone epc/systemone --namespace systemone -f systemone-local-values.yaml
 #or search and deploy specific version
-kubectl create namespace systemone
-kubectl apply -f systemone-secret.yaml --namespace=systemone
-kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone
 helm search repo epc
 helm install my20251203systemone epc/systemone --namespace systemone --version 0.7.31 -f systemone-local-values.yaml
 ```
@@ -77,15 +75,13 @@ minikube ssh -- "sudo rm -rf /mnt/minikube/systemone/"
 ## Install alvin using helm, from epc repository
 
 ```bash
+helm repo update
 kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
 kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace alvin
-helm install my20251203alvin epc/alvin --namespace alvin -f alvin-local-values.yaml
 
+helm install my20251203alvin epc/alvin --namespace alvin -f alvin-local-values.yaml
 #or search and deploy specific version
-kubectl create namespace alvin
-kubectl apply -f alvin-secret.yaml --namespace=alvin
-kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace alvin
 helm search repo epc
 helm install my20251203alvin epc/alvin --namespace alvin --version 0.6.38 -f alvin-local-values.yaml
 ```
@@ -138,15 +134,13 @@ minikube ssh -- "sudo rm -rf /mnt/minikube/alvin/"
 ## Install DiVA using helm, from epc repository
 
 ```bash
+helm repo update
 kubectl create namespace diva
 kubectl apply -f diva-secret.yaml --namespace=diva
 kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace diva
-helm install my20251203diva epc/diva --namespace diva -f diva-local-values.yaml
 
+helm install my20251203diva epc/diva --namespace diva -f diva-local-values.yaml
 #or search and deploy specific version
-kubectl create namespace diva
-kubectl apply -f diva-secret.yaml --namespace=diva
-kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace diva
 helm search repo epc
 helm install my20251203diva epc/diva --namespace diva --version 0.6.56 -f diva-local-values.yaml
 ```
