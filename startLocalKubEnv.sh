@@ -53,6 +53,4 @@ kubectl apply -f "${SECRET_FILE}" --namespace="${SYSTEM}"
 kubectl apply -f "${PERMISSION_VOLUMES_FILE}" --namespace="${SYSTEM}"
 
 # Install Helm chart
-helm install "${RELEASE}" "${SYSTEM}" \
-  --namespace "${SYSTEM}" \
-  -f "${VALUES_FILE}"
+helm install "${RELEASE}" "${SYSTEM}" --namespace "${SYSTEM}" -f "${VALUES_FILE}"
