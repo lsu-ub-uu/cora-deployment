@@ -5,3 +5,5 @@ metadata:
 data:
   job-index.sh: |-
 {{ .Files.Get "files/job-index.sh" | indent 4 }}
+  login.sh: |-
+{{ .Files.Get "files/login.sh" | indent 4 }}
