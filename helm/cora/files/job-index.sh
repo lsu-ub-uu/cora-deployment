@@ -7,8 +7,6 @@ start() {
   echo "Starting indexing process..."
 #  loginUsingAppToken
   loginUsingIdpLogin
-  echo "AUTH_TOKEN"
-  echo $AUTH_TOKEN
   index
   logoutFromCora
 }
@@ -28,7 +26,6 @@ waitingForListOfSystemToEnsureSystemIsRunning(){
 
 index() {
   # Get index action links
-  echo "jalköd faölfdalös dföla sdlfalösd f alkdsjfl "
   local indexActionLinks=($(getIndexActionLinks "${RECORDTYPE_URL}"))
 
   echo "Found ${#indexActionLinks[@]} <batch_index> blocks"

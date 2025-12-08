@@ -8,6 +8,7 @@ loginUsingAppToken() {
   -H "Content-Type: application/vnd.cora.login" \
   -k -i "${LOGIN_URL}" \
   --data "${LOGINID}"$'\n'"${APP_TOKEN}")
+  setTokens "$loginAnswer"
   echo "Logged in... "
 }
 
@@ -18,12 +19,13 @@ loginUsingIdpLogin() {
   -H "accept: application/vnd.cora.authentication+json" \
   -H "eppn: ${LOGINID}" \
   -k -i "${IDP_LOGIN_URL}login")
+  setTokens "$loginAnswer"
   echo "Logged in... "
 }
   
 setTokens() {
   local loginAnswer="$1"
-  echo "loginAnser in setTokens: ${loginAnswer}"
+  #echo "loginAnser in setTokens: ${loginAnswer}"
   AUTH_TOKEN=$(echo "${loginAnswer}" | grep -oP '(?<={"name":"token","value":")[^"]+')
   AUTH_TOKEN_DELETE_URL=$(echo "${loginAnswer}" | grep -oP '(?<="url":")[^"]+')
 }
