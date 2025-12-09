@@ -46,16 +46,6 @@ spec:
             secretKeyRef:
               name: {{ .Values.system.name }}-secret
               key: divaClientSessionCookieSecrets
-        - name: POOL_LOGIN_ID
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.system.name }}-secret
-              key: divaClientPoolLoginId
-        - name: POOL_APP_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.system.name }}-secret
-              key: divaClientPoolAppToken
         {{- if .Values.security.divaClientAppTokenUsers }}
         - name: APP_TOKEN_USERS
           value: {{ .Values.security.divaClientAppTokenUsers | toJson | quote }}
