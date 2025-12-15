@@ -35,7 +35,7 @@ spec:
         - name: loginRestUrl
           value: {{ .Values.externalAccess.loginRestUrl }}
         - name: JAVA_OPTS
-          value: -DdeploymentInfo.applicationName=${applicationName} -DdeploymentInfo.deploymentName=${deploymentName} -DdeploymentInfo.coraVersion=${coraVersion} -DdeploymentInfo.applicationVersion=${applicationVersion} -DdeploymentInfo.loginRestUrl=${loginRestUrl} 
+          value: -DdeploymentInfo.applicationName="${applicationName}" -DdeploymentInfo.deploymentName="${deploymentName}" -DdeploymentInfo.coraVersion="${coraVersion}" -DdeploymentInfo.applicationVersion="${applicationVersion}" -DdeploymentInfo.loginRestUrl="${loginRestUrl}" 
         volumeMounts:
         - mountPath: "/mnt/data/basicstorage"
           name: converted-files-read-write
