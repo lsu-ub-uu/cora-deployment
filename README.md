@@ -34,6 +34,7 @@ helm install my20251203systemone epc/systemone --namespace systemone --version 0
 
 ```bash
 cd helm
+helm dependency build cora/
 helm dependency update systemone/
 kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
@@ -90,6 +91,7 @@ helm install my20251203alvin epc/alvin --namespace alvin --version 0.6.38 -f alv
 
 ```bash
 cd helm
+helm dependency build cora/
 helm dependency update alvin/
 kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
@@ -149,6 +151,7 @@ helm install my20251203diva epc/diva --namespace diva --version 0.6.56 -f diva-l
 
 ```bash
 cd helm
+helm dependency build cora/
 helm dependency update diva/
 kubectl create namespace diva
 kubectl apply -f diva-secret.yaml --namespace=diva

@@ -7,7 +7,7 @@ data:
 externalAccess:
   systemUrl: http://192.168.49.2:30981
   deploymentName: Alvin - lokalt (👀 k8s)
-  loginRestUrl: http://172.18.0.15:31981/login/rest/
+  loginRestUrl: http://192.168.49.2:31981/login/rest/
 django:
   allowedHosts: "*"
 shibboleth:
