@@ -24,12 +24,23 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: restToPathSystem
-          value: {{ .Values.externalAccess.restToPathSystem }}
-        - name: iiifToPathSystem
-          value: {{ .Values.externalAccess.iiifToPathSystem }}
+        - name: applicationName
+          value: {{ .Values.externalAccess.applicationName }}
+        - name: deploymentName
+          value: {{ .Values.externalAccess.deploymentName }}
+        - name: coraVersion
+          value: {{ .Values.externalAccess.coraVersion }}
+        - name: applicationVersion
+          value: {{ .Values.externalAccess.applicationVersion }}
+        - name: loginRestUrl
+          value: {{ .Values.externalAccess.loginRestUrl }}
         - name: JAVA_OPTS
-          value: -Drest.to.path.system=${restToPathSystem} -Diiif.to.path.system=${iiifToPathSystem}        
+          value: >
+          -DdeploymentInfoApplicationName=${applicationName} 
+          -DdeploymentInfoDeploymentName=${deploymentName} 
+          -DdeploymentInfoCoraVersion=${coraVersion} 
+          -DdeploymentInfoApplicationVersion=${applicationVersion} 
+          -DdeploymentInfoLoginRestUrl=${loginRestUrl} 
         volumeMounts:
         - mountPath: "/mnt/data/basicstorage"
           name: converted-files-read-write

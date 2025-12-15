@@ -2,7 +2,7 @@
 set -uo pipefail
 
 start() {
-  importLogin
+  importDependencies
   waitingForListOfSystemToEnsureSystemIsRunning
   echo "Starting indexing process..."
 #  loginUsingAppToken
@@ -11,17 +11,10 @@ start() {
   logoutFromCora
 }
 
-importLogin(){
-	source "$(dirname "$0")/login.sh"
-}
-
-waitingForListOfSystemToEnsureSystemIsRunning(){
-  echo "Waiting for application to start ..."
-  until curl -s --fail "${RECORDTYPE_URL}" > /dev/null 2>&1; do
-    sleep 5
-  done
-
-  echo "Application is ready. Running indexing script..."
+importDependencies(){
+	SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+	source "$SCRIPT_DIR/waitForSystemToBeRunning.sh"
+	source "$SCRIPT_DIR/login.sh"
 }
 
 index() {
