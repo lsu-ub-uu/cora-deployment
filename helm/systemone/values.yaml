@@ -31,10 +31,10 @@ data:
   dataDividers: cora jsClient systemOne
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
-  applicationName: systemOne
-  deploymentName: SystemOne - mustBeSetOnSpecificEnvironmentValuesFile
-  coraVersion: 0.1.0
-  applicationVersion: 0.1.0
+  applicationName: "systemOne"
+  deploymentName: "SystemOne - mustBeSetOnSpecificEnvironmentValuesFile"
+  coraVersion: "0.1.0"
+  applicationVersion: "0.1.0"
   loginRestUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   loginPathSystem: /login/rest/
 port:
