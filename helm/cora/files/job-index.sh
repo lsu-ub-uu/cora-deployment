@@ -3,7 +3,7 @@ set -uo pipefail
 
 start() {
   importDependencies
-  waitingForListOfSystemToEnsureSystemIsRunning
+  waitingForListOfSystemToEnsureSystemIsRunning "${RECORDTYPE_URL}"
   echo "Starting indexing process..."
 #  loginUsingAppToken
   loginUsingIdpLogin
