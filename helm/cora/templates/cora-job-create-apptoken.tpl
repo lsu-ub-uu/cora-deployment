@@ -1,4 +1,4 @@
-{{- define "cora.job-index" -}}
+{{- define "cora.job-create-apptoken" -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
