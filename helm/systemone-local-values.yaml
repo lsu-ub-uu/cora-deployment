@@ -6,7 +6,7 @@ data:
 
 externalAccess:
   systemUrl: http://192.168.49.2:30980
-  deploymentName: "SystemOne - lokalt (👀 k8s)"
+  deploymentName: "SystemOne - lokalt (☸ k8s)"
   loginRestUrl: http://172.18.0.15:31980/login/rest/
 shibboleth:
   domain: local
