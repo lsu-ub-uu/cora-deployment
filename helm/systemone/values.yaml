@@ -62,4 +62,4 @@ docker:
   fitnesse: systemone-docker-fitnesse:1.45.0
   rest: systemone-docker:1.20.0
   apache: systemone-docker-apache:1.15.0
-  jobindex: cora-docker-console:1.0.0
+  console: cora-docker-console:1.1.0

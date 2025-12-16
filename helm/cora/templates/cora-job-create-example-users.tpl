@@ -1,17 +1,18 @@
-{{- define "cora.job-index" -}}
+{{- define "cora.job-create-example-users" -}}
+{{- if gt (len .Values.data.exampleUsers | default (list)) 0 }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Values.system.name }}-job-index
+  name: {{ .Values.system.name }}-job-create-example-users
   annotations:
-    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook": post-install
     "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     spec:
       restartPolicy: OnFailure
       containers:
-        - name: {{ .Values.system.name }}-job-index
+        - name: {{ .Values.system.name }}-job-example-users
           image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.console }}
           env:
             - name: LOGINID
@@ -19,8 +20,10 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.system.name }}-secret
                   key: indexLoginId
-            - name: RECORDTYPE_URL
-              value: {{ .Values.externalAccess.systemUrl }}/rest/record/recordType
+            - name: RUNNING_URL
+              value: {{ .Values.externalAccess.systemUrl }}/rest/record/system
+            - name: RECORD_URL
+              value: {{ .Values.externalAccess.systemUrl }}/rest/record/
             - name: IDP_LOGIN_URL
               value: http://idplogin:8080/idplogin/login/rest/apptoken
           volumeMounts:
@@ -28,9 +31,14 @@ spec:
               mountPath: /scripts
               readOnly: true
           command: ["/bin/bash"]
-          args: ["/scripts/job-index.sh"]
+          args: 
+            - "/scripts/jobAddAppTokenAndCreateExampleUsers.sh"
+          {{- range .Values.data.exampleUsers }}
+            - "{{ . }}"
+          {{- end }}
       volumes:
         - name: script-volume
           configMap:
-            name: cora-index-script
+            name: cora-create-example-users-script
+{{- end }}
 {{- end }}

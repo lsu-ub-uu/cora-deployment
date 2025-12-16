@@ -3,7 +3,11 @@ deploy:
 
 data:
   dataDividers: "cora jsClient alvin alvinPreview alvinTestSystem alvinProduction alvinData"
-
+  exampleUsers: 
+    - "141414"
+    - "151515"
+    - "coraUser:4412566252284358"
+    
 externalAccess:
   systemUrl: http://192.168.49.2:30981
   deploymentName: Alvin - lokalt (👀 k8s)

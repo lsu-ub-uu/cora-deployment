@@ -12,7 +12,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: {{ .Values.system.name }}-job-create-apptoken
-          image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.jobindex }}
+          image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.console }}
           env:
             - name: LOGINID
               valueFrom:
