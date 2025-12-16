@@ -27,3 +27,8 @@
 {{ include "cora.apache" . }}
 ---
 {{ include "cora.job-index" . }}
+---
+{{ include "cora.job-create-example-users" . }}
+---
+{{ include "cora.job-create-apptoken" . }}
+

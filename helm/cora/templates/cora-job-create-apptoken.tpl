@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.system.name }}-job-create-apptoken
   annotations:
     "helm.sh/hook": post-install
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     spec:
@@ -19,10 +19,10 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.system.name }}-secret
                   key: indexLoginId
-            - name: RECORDTYPE_URL
-              value: {{ .Values.externalAccess.systemUrl }}/rest/record/recordType
-            - name: LOGIN_URL
-              value: {{ .Values.externalAccess.systemUrl }}/login/rest/apptoken
+            - name: RUNNING_URL
+              value: {{ .Values.externalAccess.systemUrl }}/rest/record/system
+            - name: RECORD_URL
+              value: {{ .Values.externalAccess.systemUrl }}/rest/record/
             - name: IDP_LOGIN_URL
               value: http://idplogin:8080/idplogin/login/rest/apptoken
           volumeMounts:
@@ -30,7 +30,10 @@ spec:
               mountPath: /scripts
               readOnly: true
           command: ["/bin/bash"]
-          args: ["/scripts/createAppTokenForBinaryConverter.sh"]
+          args: 
+            - "/scripts/jobAddAppTokenToUserAndStoreAsSecret.sh"
+            - "binaryConverter"
+            - "AppToken used by internal binary converter processes, do not remove!"
       volumes:
         - name: script-volume
           configMap:

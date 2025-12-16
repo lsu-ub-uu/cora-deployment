@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: cora-create-apptoken-script
 data:
-  createAppTokenForBinaryConverter.sh: |-
-{{ .Files.Get "files/createAppTokenForBinaryConverter.sh" | indent 4 }}
+  jobAddAppTokenToUserAndStoreAsSecret.sh: |-
+{{ .Files.Get "files/jobAddAppTokenToUserAndStoreAsSecret.sh" | indent 4 }}
   waitForSystemToBeRunning.sh: |-
 {{ .Files.Get "files/waitForSystemToBeRunning.sh" | indent 4 }}
   dataFromAndToServer.sh: |-
