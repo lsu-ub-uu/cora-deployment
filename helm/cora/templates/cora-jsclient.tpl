@@ -22,8 +22,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: SERVER_REST_URL
-          value: {{ .Values.externalAccess.systemRestUrl }}
+        - name: JAVA_OPTS
+          value: "-DserverRestUrl={{ .Values.externalAccess.systemRestUrl }}"
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
