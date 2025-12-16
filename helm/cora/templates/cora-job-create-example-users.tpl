@@ -1,5 +1,5 @@
 {{- define "cora.job-create-example-users" -}}
-{{- if gt (len .Values.data.exampleUsers | default (list)) 0 }}
+{{- if gt (len (default (list) .Values.data.exampleUsers)) 0 }}
 apiVersion: batch/v1
 kind: Job
 metadata:
