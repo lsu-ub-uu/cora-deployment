@@ -21,6 +21,9 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.jsclient }}
         ports:
         - containerPort: 8080
+        env:
+        - name: SERVER_REST_URL
+          value: {{ .Values.externalAccess.systemRestUrl }}
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}

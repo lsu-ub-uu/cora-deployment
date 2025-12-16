@@ -10,6 +10,7 @@ data:
     
 externalAccess:
   systemUrl: http://192.168.49.2:30981
+  systemRestUrl: http://192.168.49.2:30981/rest/
   deploymentName: Alvin - lokalt (👀 k8s)
   loginRestUrl: http://192.168.49.2:31981/login/rest/
 django:
