@@ -26,8 +26,8 @@ addAppTokenToUserAndStoreAsSecret() {
     local updateAnswer=$(addAndStoreAppTokenToUser "${RECORD_URL}user/$userId" "$note")
     local token=$(extractTokenFromUpdateAnswer "$updateAnswer")
     local loginId=$(extractLoginIdFromUpdateAnswer "$updateAnswer")
-	createSecretFile "${loginId}" "${token}"
-	applySecret
+#	createSecretFile "${loginId}" "${token}"
+#	applySecret
 }
 
 extractLoginIdFromUpdateAnswer(){
