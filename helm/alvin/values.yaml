@@ -32,8 +32,9 @@ data:
   dataDividers: cora jsClient alvin
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
-  restToPathSystem: /rest/
-  iiifToPathSystem: /iiif/
+  applicationName: alvin
+  coraVersion: 0.1.0
+  applicationVersion: 0.1.0
   loginPathSystem: /login/rest/
   alvinClientPath: alvinclient
 port:
