@@ -1,3 +1,5 @@
+{{ include "cora.binaryconverter-service-account" . }}
+---
 {{ include "cora.serveralias" . }}
 ---
 {{ include "cora.solr" . }}
