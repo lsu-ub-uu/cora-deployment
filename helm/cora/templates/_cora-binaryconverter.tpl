@@ -15,8 +15,10 @@ spec:
       labels:
         app: {{ .Values.system.name }}-binaryconverter-{{ .Values.binaryConverter.subName }}
     spec:
+      serviceAccountName: binaryconverter-job-sa
       initContainers:
         {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForBinarySecret | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-binaryconverter-{{ .Values.binaryConverter.subName }}
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.binaryconverter }}
@@ -28,12 +30,12 @@ spec:
         - name: loginId
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.system.name }}-secret
+              name: binaryconverter-secret
               key: binaryConverterLoginId
         - name: appToken
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.system.name }}-secret
+              name: binaryconverter-secret
               key: binaryConverterAppToken
         - name: rabbitMqHostName
           value: "{{ .Values.system.name }}-rabbitmq"

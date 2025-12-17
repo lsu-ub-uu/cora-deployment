@@ -26,7 +26,7 @@ addAppTokenToUserAndStoreAsSecret() {
     local updateAnswer=$(addAndStoreAppTokenToUser "${RECORD_URL}user/$userId" "$note")
     local token=$(extractTokenFromUpdateAnswer "$updateAnswer")
     local loginId=$(extractLoginIdFromUpdateAnswer "$updateAnswer")
-#	createSecretFile "${loginId}" "${token}"
+	createSecretFile "${loginId}" "${token}"
 #	applySecret
 }
 
@@ -43,22 +43,27 @@ createSecretFile() {
 	# Base64 encode values for Kubernetes Secret
 	local loginIdB64=$(echo -n "$loginId" | base64)
 	local appTokenB64=$(echo -n "$token" | base64)
+	
+	kubectl create secret generic binaryconverter-secret \
+  		--from-literal=binaryConverterLoginId="$loginId" \
+  		--from-literal=binaryConverterAppToken="$token" \
+  		--dry-run=client -o yaml | kubectl apply -f -
 
-	# Create a secret YAML file
-cat <<EOF > binaryconverter-secret.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: binaryconverter-secret
-type: Opaque
-data:
-  binaryConverterLoginId: $loginIdB64
-  binaryConverterAppToken: $appTokenB64
-EOF
+#	# Create a secret YAML file
+#cat <<EOF > binaryconverter-secret.yaml
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: binaryconverter-secret
+#type: Opaque
+#data:
+#  binaryConverterLoginId: $loginIdB64
+#  binaryConverterAppToken: $appTokenB64
+#EOF
 }
 
-applySecret(){
-	kubectl apply -f binaryconverter-secret.yaml
-}
+#applySecret(){
+#	kubectl apply -f binaryconverter-secret.yaml
+#}
 
 start "$@"

@@ -17,3 +17,14 @@ initContainer:
         - -c
         - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
+  waitForBinarySecret:
+    - name: init-wait-for-binary-secret
+      image: bitnami/kubectl:latest
+      command:
+        - sh
+        - -c
+        - |
+          NS=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+          until kubectl -n "$NS" get secret binaryconverter-secret >/dev/null 2>&1; do
+            echo "Waiting for binaryconverter-secret in namespace $NS...";
+            sleep 5; done

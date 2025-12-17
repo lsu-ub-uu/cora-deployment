@@ -1,3 +1,5 @@
+{{ include "cora.binaryconverter-service-account" . }}
+---
 {{ include "cora.serveralias" . }}
 ---
 {{ include "cora.solr" . }}
@@ -31,3 +33,4 @@
 {{ include "cora.job-create-example-users" . }}
 ---
 {{ include "cora.job-create-apptoken" . }}
+
