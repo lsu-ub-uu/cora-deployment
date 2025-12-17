@@ -11,6 +11,7 @@ data:
     - "user:182924359788077"
     - "user:8985188367779791"
     - "coraUser:491201365536105"
+    - "playwrightTester"
     
 externalAccess:
   systemUrl: http://192.168.49.2:30982
