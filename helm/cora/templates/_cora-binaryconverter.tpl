@@ -31,12 +31,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: binaryconverter-secret
-              key: binaryConverterLoginId
+              key: loginId
         - name: appToken
           valueFrom:
             secretKeyRef:
               name: binaryconverter-secret
-              key: binaryConverterAppToken
+              key: appToken
         - name: rabbitMqHostName
           value: "{{ .Values.system.name }}-rabbitmq"
         - name: rabbitMqPort

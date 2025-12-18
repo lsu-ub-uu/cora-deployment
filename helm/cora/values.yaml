@@ -28,3 +28,25 @@ initContainer:
           until kubectl -n "$NS" get secret binaryconverter-secret >/dev/null 2>&1; do
             echo "Waiting for binaryconverter-secret in namespace $NS...";
             sleep 5; done
+  waitFor131313Secret:
+    - name: init-wait-for-131313-secret
+      image: bitnami/kubectl:latest
+      command:
+        - sh
+        - -c
+        - |
+          NS=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+          until kubectl -n "$NS" get secret 131313-secret >/dev/null 2>&1; do
+            echo "Waiting for 131313-secret in namespace $NS...";
+            sleep 5; done
+  waitFor121212Secret:
+    - name: init-wait-for-121212-secret
+      image: bitnami/kubectl:latest
+      command:
+        - sh
+        - -c
+        - |
+          NS=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+          until kubectl -n "$NS" get secret 121212-secret >/dev/null 2>&1; do
+            echo "Waiting for 121212-secret in namespace $NS...";
+            sleep 5; done

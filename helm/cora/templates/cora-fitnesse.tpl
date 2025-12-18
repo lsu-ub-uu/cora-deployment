@@ -16,6 +16,10 @@ spec:
       labels:
         app: {{ .Values.system.name }}-fitnesse
     spec:
+      serviceAccountName: binaryconverter-job-sa
+      initContainers:
+        {{- toYaml .Values.cora.initContainer.waitFor131313Secret | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitFor121212Secret | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-fitnesse
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fitnesse }}
@@ -39,13 +43,25 @@ spec:
         - name: GATEKEEPER_SERVER_URL
           value: http://gatekeeper:8080/gatekeeperserver/
         - name: FITNESSE_ADMIN_LOGIN_ID
-          value: fitnesseAdmin@system.cora.uu.se
+          valueFrom:
+            secretKeyRef:
+              name: 131313-secret
+              key: loginId
         - name: FITNESSE_ADMIN_APP_TOKEN
-          value: 29c30232-d514-4559-b60b-6de47175c1df
+          valueFrom:
+            secretKeyRef:
+              name: 131313-secret
+              key: appToken
         - name: FITNESSE_USER_LOGIN_ID
-          value: fitnesseUser@system.cora.uu.se
+          valueFrom:
+            secretKeyRef:
+              name: 121212-secret
+              key: loginId
         - name: FITNESSE_USER_APP_TOKEN
-          value: bd699488-f9d1-419d-a79d-9fa8a0f3bb9d
+          valueFrom:
+            secretKeyRef:
+              name: 121212-secret
+              key: appToken
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
           name: archive-read-write
