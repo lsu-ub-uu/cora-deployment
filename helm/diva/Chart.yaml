@@ -3,8 +3,8 @@ name: diva
 description: A Helm chart for DiVA on Kubernetes
 type: application
 version: 0.7.17
-appVersion: 0.0.1
+appVersion: 1.14.0
 dependencies:
   - name: cora
-    version: 1.9.0
+    version: 2.1.0
     repository: file://../cora
