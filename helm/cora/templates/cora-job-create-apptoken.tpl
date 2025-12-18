@@ -5,8 +5,8 @@ metadata:
   name: {{ .Values.system.name }}-job-create-apptoken
   annotations:
     "helm.sh/hook": post-install
-#    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
-    "helm.sh/hook-delete-policy": before-hook-creation
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+#    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     spec:
