@@ -27,6 +27,15 @@ uninstall_release() {
     print_step "System uninstalled!"
 }
 
+cleanup_failure() {
+    print_step "Clean up initialized..."
+    print_step "Waiting for any created pods to terminate"
+    kubectl wait --for=delete pod --all --namespace="$NAMESPACE" --timeout 300s
+    delete_old_installation
+    print_step "Clean up complete..."
+    exit 1
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 print_usage() {
@@ -107,7 +116,7 @@ prepare_for_installation() {
         minikube ssh -- "sudo sysctl -w fs.inotify.max_user_instances=1024"
         minikube ssh -- "sudo sysctl -w fs.inotify.max_user_watches=524288"
     fi
-    
+
     # Prune docker images / clear image cache
     if [[ "$NO_CACHE" == "true" ]]; then
         print_step "Pruning cached docker images..."
@@ -186,8 +195,13 @@ install_new_helm_chart() {
     kubectl apply -f $NAMESPACE-minikube-persistent-volumes.yaml --namespace="$NAMESPACE"
 
     # Install helm chart
-    print_step "Installing helm chart for release $RELEASE_NAME"
-    helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml" --atomic
+    print_step "Installing helm chart for release $RELEASE_NAME..."
+    if helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml" --atomic --timeout 3m; then
+       print_step "System '$NAMESPACE' installed successfully..."
+    else
+       print_warning "Installation of '$NAMESPACE' failed or timed out!"
+       cleanup_failure
+    fi
 
     # Wait for pods to be ready
     print_step "Waiting for all pods in '$NAMESPACE' to be running..."
