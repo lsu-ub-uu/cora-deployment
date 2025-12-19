@@ -5,9 +5,7 @@ set -e
 usage() {
     cat <<EOF
 Usage: $(basename "$0") <system_name>
-
-<system_name>    The system to clean up (systemone | diva | alvin)
-
+<system_name> The system to clean up (systemone | diva | alvin)
 Examples:
   $(basename "$0") systemone
   $(basename "$0") diva

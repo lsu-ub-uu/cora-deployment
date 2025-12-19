@@ -31,7 +31,7 @@ spec:
         - name: coraVersion
           value: {{ .Values.externalAccess.coraVersion }}
         - name: applicationVersion
-          value: {{ .Values.externalAccess.applicationVersion }}
+          value: {{ .Chart.AppVersion }}
         - name: loginRestUrl
           value: {{ .Values.externalAccess.loginRestUrl }}
         - name: JAVA_OPTS

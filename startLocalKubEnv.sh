@@ -3,11 +3,9 @@ set -e
 
 # Usage function
 usage() {
-    cat <<EOF
+	cat <<EOF
 Usage: $(basename "$0") <system_name>
-
-<system_name>    The system to deploy (systemone | diva | alvin)
-
+<system_name> The system to deploy (systemone | diva | alvin)
 Examples:
   $(basename "$0") systemone
 EOF
