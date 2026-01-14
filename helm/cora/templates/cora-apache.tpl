@@ -30,12 +30,12 @@ spec:
         {{- end }}
         volumeMounts:
         - mountPath: "/etc/shibboleth/credentials"
-          name: credentials-read-write
+          name: shibd-config
           readOnly: true
       volumes:
-        - name: credentials-read-write
-          persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-credentials-read-write-volume-claim
+        - name: shibd-config
+          configMap:
+            name: shibd-config
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}

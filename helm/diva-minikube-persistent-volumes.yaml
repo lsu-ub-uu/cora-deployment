@@ -1,13 +1,3 @@
-#postgresql
-
-#pvSharedArchive #ReadWriteMany
-#pvcSharedArchiveReadWrite #ReadWriteMany
-#pvcSharedArchiveReadOnly #ReadOnlyMany
-
-#pvConvertedFiles #ReadWriteMany
-#pvcConvertedFilesReadWrite #ReadWriteMany
-#pvcConvertedFilesReadOnly #ReadOnlyMany
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -47,21 +37,6 @@ metadata:
   name: diva-converted-files-read-write-volume-claim
   labels:
     app: diva-converted-files
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 20Gi
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: diva-credentials-read-write-volume-claim
-  labels:
-    app: diva-credentials-read-write-volume
 spec:
   storageClassName: manual
   accessModes:
@@ -129,23 +104,4 @@ spec:
     namespace: diva
     name: diva-converted-files-read-write-volume-claim
     
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: diva-credentials-read-write-volume
-  labels:
-    type: local
-    app: diva-credentials
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /mnt/minikube/diva/certificates/shibboleth/local
-  claimRef:
-    namespace: diva
-    name: diva-credentials-read-write-volume-claim
 ---

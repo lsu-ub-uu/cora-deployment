@@ -2,9 +2,9 @@ apiVersion: v2
 name: systemone
 description: A Helm chart for SystemOne on Kubernetes
 type: application
-version: 0.8.18
-appVersion: 1.21.0
+version: 0.10.0
+appVersion: 1.22.0
 dependencies:
   - name: cora
-    version: 2.3.0
+    version: 3.1.0
     repository: file://../cora

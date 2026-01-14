@@ -196,7 +196,7 @@ install_new_helm_chart() {
 
     # Install helm chart
     print_step "Installing helm chart for release $RELEASE_NAME..."
-    if helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml" --atomic --timeout 3m; then
+    if helm install "$RELEASE_NAME" $NAMESPACE --namespace "$NAMESPACE" -f "$NAMESPACE-local-values.yaml"; then
        print_step "System '$NAMESPACE' installed successfully..."
     else
        print_warning "Installation of '$NAMESPACE' failed or timed out!"
