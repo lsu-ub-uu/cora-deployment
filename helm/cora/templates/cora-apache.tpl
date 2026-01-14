@@ -23,6 +23,8 @@ spec:
         env:
         - name: FITNESSE_CONTEXT_ROOT_ARG
           value: {{ .Values.fitnesse.contextRoot }}
+        - name: SERVER_NAME_ARG
+          value: {{ .Values.externalAccess.systemUrl }}
         {{- if .Values.apache.useExtraEnvs }}
         {{- toYaml .Values.apache.extraEnvs | nindent 8 }}
         {{- end }}
