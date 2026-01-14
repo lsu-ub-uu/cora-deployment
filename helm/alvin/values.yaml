@@ -57,7 +57,7 @@ docker:
   rabbitmq: cora-docker-rabbitmq:1.4.0
   fedora: cora-docker-fedora:1.3.0
   solr: cora-docker-solr:1.3.0
-  idplogin: cora-docker-idplogin:1.5.0
+  idplogin: cora-docker-idplogin:1.6.0
   iip: cora-docker-iipimageserver:1.3.0
   login: cora-docker-login:1.4.0
   jsclient: cora-docker-jsclient:1.30.0
