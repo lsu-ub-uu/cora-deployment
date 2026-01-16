@@ -1,3 +1,4 @@
+
 #!/bin/bash
 MINIKUBE_MOUNT="/tmp/minikube-mount/"
 CPUS="12"
@@ -29,8 +30,6 @@ uninstall_release() {
 
 cleanup_failure() {
     print_step "Clean up initialized..."
-    print_step "Waiting for any created pods to terminate"
-    kubectl wait --for=delete pod --all --namespace="$NAMESPACE" --timeout 300s
     delete_old_installation
     print_step "Clean up complete..."
     exit 1
@@ -193,6 +192,10 @@ install_new_helm_chart() {
     # Apply persistent volumes
     print_step "Applying persistant volumes..."
     kubectl apply -f $NAMESPACE-minikube-persistent-volumes.yaml --namespace="$NAMESPACE"
+
+    # Apply config-maps
+    print_step "Appying config-maps..."
+    kubectl apply -f alvin-config-map.yaml --namespace="$NAMESPACE"
 
     # Install helm chart
     print_step "Installing helm chart for release $RELEASE_NAME..."
