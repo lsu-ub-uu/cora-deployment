@@ -33,8 +33,6 @@ data:
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   applicationName: alvin
-  coraVersion: 0.1.0
-  applicationVersion: 0.1.0
   loginPathSystem: /login/rest/
   alvinClientPath: alvinclient
 port:

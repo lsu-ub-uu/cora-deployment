@@ -29,6 +29,7 @@ fi
 VALUES_FILE="${SYSTEM}-local-values.yaml"
 SECRET_FILE="${SYSTEM}-secret.yaml"
 PERMISSION_VOLUMES_FILE="${SYSTEM}-minikube-persistent-volumes.yaml"
+CONFIG_MAP_FILE="${SYSTEM}-config-map.yaml"
 DATE=$(date +%Y%m%d)
 RELEASE="my${DATE}${SYSTEM}"
 
@@ -49,6 +50,7 @@ kubectl create namespace "${SYSTEM}" --dry-run=client -o yaml | kubectl apply -f
 # Apply Kubernetes manifests
 kubectl apply -f "${SECRET_FILE}" --namespace="${SYSTEM}"
 kubectl apply -f "${PERMISSION_VOLUMES_FILE}" --namespace="${SYSTEM}"
+kubectl apply -f "${CONFIG_MAP_FILE}" --namespace systemone
 
 # Install Helm chart
 helm install "${RELEASE}" "${SYSTEM}" --namespace "${SYSTEM}" -f "${VALUES_FILE}"

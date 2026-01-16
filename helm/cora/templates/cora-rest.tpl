@@ -29,7 +29,13 @@ spec:
         - name: deploymentName
           value: {{ .Values.externalAccess.deploymentName }}
         - name: coraVersion
-          value: {{ .Values.externalAccess.coraVersion }}
+          value: "{{- $version := "" -}}
+        {{- range .Chart.Dependencies -}}
+        {{- if eq .Name "cora" -}}
+        {{- $version = .Version -}}
+        {{- end -}}
+        {{- end -}}
+        {{- $version -}}"
         - name: applicationVersion
           value: {{ .Chart.AppVersion }}
         - name: loginRestUrl

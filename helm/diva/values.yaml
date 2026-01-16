@@ -37,8 +37,6 @@ externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   divaClientBasePath: /divaclient
   applicationName: diva
-  coraVersion: 0.1.0
-  applicationVersion: 0.1.0
   loginPathSystem: /login/rest/
 port:
   apache: 30982
