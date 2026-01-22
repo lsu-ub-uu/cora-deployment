@@ -25,6 +25,8 @@ if [[ "$SYSTEM" != "systemone" && "$SYSTEM" != "diva" && "$SYSTEM" != "alvin" ]]
     usage
 fi
 
+kubectl delete secret binaryconverter-secret --namespace=$SYSTEM
+
 kubectl delete namespace "$SYSTEM" --ignore-not-found
 kubectl get pv -o name | grep "^persistentvolume/${SYSTEM}" | xargs -r kubectl delete
 minikube ssh -- "sudo rm -rf /mnt/minikube/${SYSTEM}"
