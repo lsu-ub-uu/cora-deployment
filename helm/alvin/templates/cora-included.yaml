@@ -34,5 +34,5 @@
 ---
 {{ include "cora.job-create-apptoken" . }}
 ---
-{{ include "cora.job-job-create-missing-sequences" . }}
+{{ include "cora.job-create-missing-sequences" . }}
 
