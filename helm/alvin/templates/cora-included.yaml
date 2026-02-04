@@ -33,4 +33,6 @@
 {{ include "cora.job-create-example-users" . }}
 ---
 {{ include "cora.job-create-apptoken" . }}
+---
+{{ include "cora.job-job-create-missing-sequences" . }}
 
