@@ -58,6 +58,6 @@ docker:
   jsclient: cora-docker-jsclient:1.30.0
   postgresql: systemone-docker-postgresql:1.69.0
   fitnesse: systemone-docker-fitnesse:1.50.0
-  rest: systemone-docker:1.32.0
+  rest: systemone-docker:1.33.0
   apache: systemone-docker-apache:1.17.0
   console: cora-docker-console:1.2.0
