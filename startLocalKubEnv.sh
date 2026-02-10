@@ -50,7 +50,7 @@ kubectl create namespace "${SYSTEM}" --dry-run=client -o yaml | kubectl apply -f
 # Apply Kubernetes manifests
 kubectl apply -f "${SECRET_FILE}" --namespace="${SYSTEM}"
 kubectl apply -f "${PERMISSION_VOLUMES_FILE}" --namespace="${SYSTEM}"
-kubectl apply -f "${CONFIG_MAP_FILE}" --namespace systemone
+kubectl apply -f "${CONFIG_MAP_FILE}" --namespace="${SYSTEM}"
 
 # Install Helm chart
 helm install "${RELEASE}" "${SYSTEM}" --namespace "${SYSTEM}" -f "${VALUES_FILE}"
