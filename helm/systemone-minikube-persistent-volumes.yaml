@@ -48,6 +48,21 @@ spec:
 ---
 
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: systemone-index-read-write-volume-claim
+  labels:
+    app: systemone-index
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: systemone-postgres-volume
@@ -104,5 +119,3 @@ spec:
   claimRef:
     namespace: systemone
     name: systemone-converted-files-read-write-volume-claim
-
----

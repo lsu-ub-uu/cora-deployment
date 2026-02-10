@@ -210,3 +210,14 @@ kubectl delete namespace diva
 kubectl get pv -o name | grep "^persistentvolume/diva" | xargs -r kubectl delete
 minikube ssh -- "sudo rm -rf /mnt/minikube/diva/"
 ```
+
+##How to read volumes created using k8s.io/minikube-hostpath
+
+Some of the PVC uses autocreated PV using k8s.io/minikube-hostpath. The pv volumes created are mapped inside the minikube docker.
+
+```bash
+minikube ssh
+ls -l /tmp/hostpath-provisioner/
+```
+
+For more information, read:  [Minikude guide - PV](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/) 
