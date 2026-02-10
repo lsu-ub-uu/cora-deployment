@@ -15,8 +15,6 @@ spec:
       labels:
         app: {{ .Values.system.name }}-solr
     spec:
-      securityContext:
-        fsGroup: 8983
       containers:
       - name: {{ .Values.system.name }}-solr
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.solr }}
