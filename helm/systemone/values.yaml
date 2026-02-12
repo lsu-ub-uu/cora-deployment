@@ -56,7 +56,7 @@ docker:
   gatekeeper: cora-docker-gatekeeper:1.2.0
   login: cora-docker-login:1.4.0
   jsclient: cora-docker-jsclient:1.30.0
-  postgresql: systemone-docker-postgresql:1.71.0
+  postgresql: systemone-docker-postgresql:1.72.0
   fitnesse: systemone-docker-fitnesse:1.51.0
   rest: systemone-docker:1.33.0
   apache: systemone-docker-apache:1.17.0
