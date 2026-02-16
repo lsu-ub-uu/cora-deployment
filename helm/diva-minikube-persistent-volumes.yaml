@@ -50,9 +50,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: alvin-index-read-write-volume-claim
+  name: diva-index-read-write-volume-claim
   labels:
-    app: alvin-index
+    app: diva-index
 spec:
   accessModes:
     - ReadWriteOnce
