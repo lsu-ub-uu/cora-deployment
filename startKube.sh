@@ -46,6 +46,8 @@ print_usage() {
     echo "  --uninstall, -rm    Uninstall the specified system"
     echo "  --nocache, -nc      Prune all docker images inside minikube"
     echo "  --fresh, -new       Delete existing minikube and create new for a clean install"
+    echo "  --cpus <num>        Override default number of CPUs (default: 12)"
+    echo "  --memory <mb>       Override default memory in MB (default: 16096)"
     exit 1
 }
 
@@ -66,14 +68,32 @@ script_setup() {
                 UNINSTALL="true"
                 shift
                 ;;
-             --nocache|-nc)
+            --nocache|-nc)
                 NO_CACHE="true"
                 shift
                 ;;
-             --fresh|-new)
+            --fresh|-new)
                 FRESH="true"
                 shift
-                ;; 
+                ;;
+            --cpus)
+                if [[ -n "$2" && "$2" =~ ^[0-9]+$ ]]; then
+                    CPUS="$2"
+                    shift 2
+                else
+                    print_warning "Error: --cpus requires a numeric argument."
+                    exit 1
+                fi
+                ;;
+            --memory)
+                if [[ -n "$2" && "$2" =~ ^[0-9]+$ ]]; then
+                    MEMORY="$2"
+                    shift 2
+                else
+                    print_warning "Error: --memory requires a numeric argument."
+                    exit 1
+                fi
+                ;;
             *)
                 print_usage
                 ;;
