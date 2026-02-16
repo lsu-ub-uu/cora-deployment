@@ -195,7 +195,7 @@ install_new_helm_chart() {
 
     # Apply config-maps
     print_step "Appying config-maps..."
-    kubectl apply -f alvin-config-map.yaml --namespace="$NAMESPACE"
+    kubectl apply -f $NAMESPACE-config-map.yaml --namespace="$NAMESPACE"
 
     # Install helm chart
     print_step "Installing helm chart for release $RELEASE_NAME..."
