@@ -18,6 +18,7 @@ spec:
       initContainers:
         {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
         {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForSolr | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-rest
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.rest }}

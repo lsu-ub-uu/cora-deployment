@@ -3,7 +3,7 @@ set -uo pipefail
 
 waitingForListOfSystemToEnsureSystemIsRunning() {
 	local runningUrl=$1
- 	echo "Waiting for application to start ..."
+ 	echo "Waiting for application to start ... $runningUrl"
  	until curl -s --fail "${runningUrl}" > /dev/null 2>&1; do
 		sleep 5
 	done

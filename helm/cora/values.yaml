@@ -17,6 +17,17 @@ initContainer:
         - -c
         - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
+  waitForSolr:
+    - name: init-wait-for-solr
+      image: curlimages/curl:8.2.1
+      command:
+        - sh
+        - -c
+        - |
+          until curl -s http://solr:8983/solr/admin/info/system | grep -q '"mode"'; do
+            echo "Waiting for Solr HTTP endpoint.."
+            sleep 5
+          done
   waitForBinarySecret:
     - name: init-wait-for-binary-secret
       image: bitnami/kubectl:latest
