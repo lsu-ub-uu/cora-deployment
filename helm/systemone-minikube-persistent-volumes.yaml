@@ -54,6 +54,7 @@ metadata:
   labels:
     app: systemone-index
 spec:
+  #storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
@@ -119,3 +120,23 @@ spec:
   claimRef:
     namespace: systemone
     name: systemone-converted-files-read-write-volume-claim
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: systemone-index-volume
+  labels:
+    type: local
+    app: systemone-index
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/minikube/systemone/index
+  claimRef:
+    namespace: systemone
+    name: systemone-index-read-write-volume-claim

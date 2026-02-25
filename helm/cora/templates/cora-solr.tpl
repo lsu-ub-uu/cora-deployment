@@ -24,6 +24,10 @@ spec:
         volumeMounts:
         - mountPath: "/var/solr/data"
           name: index-read-write
+      securityContext:
+        runAsUser: 8983
+        runAsGroup: 8983
+        fsGroup: 8983
       volumes:
         - name: index-read-write
           persistentVolumeClaim:
