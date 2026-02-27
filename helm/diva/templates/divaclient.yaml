@@ -37,6 +37,10 @@ spec:
           value: "http://apache/login/rest"
         - name: CORA_EXTERNAL_SYSTEM_URL
           value: {{ .Values.externalAccess.systemUrl }}
+        - name: RABBITMQ_HOST
+          value: {{ .Values.system.name }}-rabbitmq
+        - name: RABBITMQ_PORT
+          value: "5672"
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
         - name: SESSION_SECURE
