@@ -48,12 +48,16 @@ kind: Service
 metadata:
   name: apache
 spec:
+  {{- if .Values.port.nodePort }}
   type: NodePort
+  {{- end }}
   selector:
     app: {{ .Values.system.name }}-apache
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      {{- if .Values.port.nodePort }}
       nodePort:  {{ .Values.port.apache }}
+      {{- end }}
 {{- end }}
