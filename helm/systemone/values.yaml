@@ -36,6 +36,7 @@ externalAccess:
   loginRestUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   loginPathSystem: /login/rest/
 port:
+  nodePort: true
   apache: 30980
 apache:
   useExtraEnvs: false
