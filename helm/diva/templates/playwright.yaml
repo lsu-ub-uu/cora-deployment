@@ -53,14 +53,18 @@ kind: Service
 metadata:
   name: {{ .Values.system.name }}-playwright
 spec:
+  {{- if .Values.port.nodePort }}
   type: NodePort
+  {{- end }}
   selector:
     app: {{ .Values.system.name }}-playwright
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+      {{- if .Values.port.nodePort }}
       nodePort:  {{ .Values.port.playwright }}
+      {{- end }}
 
 {{- end }}
 

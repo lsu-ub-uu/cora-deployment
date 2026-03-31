@@ -39,6 +39,7 @@ externalAccess:
   applicationName: diva
   loginPathSystem: /login/rest/
 port:
+  nodePort: true
   apache: 30982
 apache:
   useExtraEnvs: true

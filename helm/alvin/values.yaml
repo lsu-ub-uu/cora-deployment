@@ -36,6 +36,7 @@ externalAccess:
   loginPathSystem: /login/rest/
   alvinClientPath: alvinclient
 port:
+  nodePort: true
   apache: 30981
 apache:
   useExtraEnvs: true
