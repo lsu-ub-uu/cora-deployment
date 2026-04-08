@@ -4,11 +4,31 @@ dockerRepository:
   imagePullSecrets: someImagePullSecret
 initContainer:
   waitForDb:
-    - name: init-wait-for-db
+    - name: init-wait-for-db-and-updatedb
       image: postgres:18-alpine
-      command: ['sh', '-c', 
-        'until pg_isready -h postgresql -p 5432; 
-        do echo waiting for database; sleep 2; done;']
+      env:
+        - name: PGHOST
+          value: postgresql
+        - name: PGPORT
+          value: "5432"
+        - name: PGDATABASE
+          valueFrom: ... # same as app uses
+        - name: PGUSER
+          valueFrom: ...
+        - name: PGPASSWORD
+          valueFrom: ...
+        - name: UPDATEDB_VERSION
+          value: "{{ .Chart.Version }}" # if you template values, otherwise set via values
+      command:
+        - sh
+        - -c
+        - |
+          set -e
+          until pg_isready; do echo waiting for database; sleep 2; done
+          until psql -tAc "select value from cora_meta where key='updatedb_version'" | grep -qx "$UPDATEDB_VERSION"; do
+            echo "waiting for updatedb job to set version $UPDATEDB_VERSION"
+            sleep 2
+          done
   waitForMq:
     - name: init-wait-for-mq
       image: alpine
