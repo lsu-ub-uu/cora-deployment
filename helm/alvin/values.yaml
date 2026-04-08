@@ -67,4 +67,4 @@ docker:
   rest: alvin-docker-cora:1.30.0
   console: cora-docker-console:1.2.0
   alvinclient: alvin-docker-alvinclient:1.24.0
-  apache: alvin-docker-apache:1.12.0
+  apache: alvin-docker-apache:1.13.0
