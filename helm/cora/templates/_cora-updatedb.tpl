@@ -29,4 +29,5 @@
       until psql -tAc "select value from cora_meta where key='updatedb_version'" | grep -qx "$applicationVersion"; do
         echo "waiting for updatedb_version=$applicationVersion"
         sleep 2
-
+      done
+{{- end -}}
