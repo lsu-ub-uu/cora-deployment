@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.system.name }}-rest
     spec:
       initContainers:
-        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
+        {{- include "cora.initContainer.waitForDbAndUpdatedbVersion" . | nindent 6 }}
         {{- toYaml .Values.cora.initContainer.waitForMq | nindent 6 }}
         {{- toYaml .Values.cora.initContainer.waitForSolr | nindent 6 }}
       containers:

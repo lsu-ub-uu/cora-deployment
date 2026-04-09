@@ -28,6 +28,8 @@
 ---
 {{ include "cora.apache" . }}
 ---
+{{ include "cora.job-updatedb" . }}
+---
 {{ include "cora.job-index" . }}
 ---
 {{ include "cora.job-create-example-users" . }}

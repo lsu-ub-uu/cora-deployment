@@ -25,8 +25,8 @@ spec:
         args:
           - ./updatedb/updateDb.sh
         env:
-        - name: UPDATEDB_VERSION
-          value: {{ .Chart.Version | quote }}
+        - name: applicationVersion
+          value: {{ .Chart.AppVersion }}
         - name: POSTGRES_HOST
           value: {{ .Values.system.name }}-postgresql
         - name: POSTGRES_DB
@@ -41,7 +41,7 @@ spec:
             secretKeyRef:
               name: {{ .Values.system.name }}-secret
               key: POSTGRES_PASSWORD
-        - name: DATA_DIVIDERS_TO_UPDATE
+        - name: DATA_DIVIDERS
           value: {{ .Values.data.dataDividers }}
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
