@@ -4,11 +4,11 @@ dockerRepository:
   imagePullSecrets: someImagePullSecret
 initContainer:
   waitForDb:
-    - name: init-wait-for-db
-      image: postgres:18-alpine
-      command: ['sh', '-c', 
-        'until pg_isready -h postgresql -p 5432; 
-        do echo waiting for database; sleep 2; done;']
+  - name: init-wait-for-db
+    image: postgres:18-alpine
+    command: ['sh', '-c', 
+      'until pg_isready -h postgresql -p 5432; 
+      do echo waiting for database; sleep 2; done;']
   waitForMq:
     - name: init-wait-for-mq
       image: alpine

@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.system.name }}-login
     spec:
       initContainers:
-        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
+        {{- include "cora.initContainer.waitForDbAndUpdatedbVersion" . | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-login
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.login }}

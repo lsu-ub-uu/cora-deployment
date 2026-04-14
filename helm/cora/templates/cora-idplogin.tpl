@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.system.name }}-idplogin
     spec:
       initContainers:
-        {{- toYaml .Values.cora.initContainer.waitForDb | nindent 6 }}
+        {{- include "cora.initContainer.waitForDbAndUpdatedbVersion" . | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-idplogin
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.idplogin }}
