@@ -5,7 +5,7 @@ kind: Job
 metadata:
   name: {{ .Values.system.name }}-job-create-example-users
   annotations:
-    "helm.sh/hook": post-install
+    "helm.sh/hook": post-install, post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   template:
