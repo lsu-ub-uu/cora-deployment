@@ -5,10 +5,10 @@ metadata:
   name: {{ .Values.system.name }}-job-updatedb
   labels:
     app: {{ .Values.system.name }}-job-updatedb
-  annotations:
-    "helm.sh/hook": post-install,post-upgrade
-    "helm.sh/hook-weight": "-10"
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+#  annotations:
+#    "helm.sh/hook": post-install,post-upgrade
+#    "helm.sh/hook-weight": "-10"
+#    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   backoffLimit: 0
   template:
