@@ -13,3 +13,5 @@ data:
 {{ .Files.Get "files/appTokenForUser.sh" | indent 4 }}
   login.sh: |-
 {{ .Files.Get "files/login.sh" | indent 4 }}
+  deleteAllRecordsForUrl.sh: |-
+{{ .Files.Get "files/deleteAllRecordsForUrl.sh" | indent 4 }}

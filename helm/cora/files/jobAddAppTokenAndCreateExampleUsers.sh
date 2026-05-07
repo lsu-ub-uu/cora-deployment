@@ -7,6 +7,8 @@ start() {
 	waitingForListOfSystemToEnsureSystemIsRunning "${RUNNING_URL}"
 	echo "Starting adding appTokens process..."
 	loginUsingIdpLogin
+	deleteAllRecordsForUrl "${RECORD_URL}exampleUser"
+	removeAppTokenAndPasswordFromAllUsers
 	addAppTokenAndCreateExampleUsers $userIds
 	logoutFromCora
 }
@@ -15,6 +17,7 @@ importDependencies(){
 	SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 	source "$SCRIPT_DIR/login.sh"
 	source "$SCRIPT_DIR/waitForSystemToBeRunning.sh"
+	source "$SCRIPT_DIR/deleteAllRecordsForUrl.sh"
 	source "$SCRIPT_DIR/appTokenForUser.sh"
 }
 

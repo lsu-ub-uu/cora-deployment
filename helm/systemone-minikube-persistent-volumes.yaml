@@ -6,7 +6,7 @@ metadata:
   labels:
     app: systemone-postgres
 spec:
-  storageClassName: manual
+  #storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -22,7 +22,7 @@ metadata:
   labels:
     app: systemone-archive
 spec:
-  storageClassName: manual
+  #storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -38,7 +38,7 @@ metadata:
   labels:
     app: systemone-converted-files
 spec:
-  storageClassName: manual
+  #storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -61,82 +61,83 @@ spec:
     requests:
       storage: 20Gi
 
----
+#OBS: Vi behöver inte definera PV. De kommer att blir autoskappade. Om man vill ser data i den, kan man hittar den i minikube instansen.
 
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: systemone-postgres-volume
-  labels:
-    type: local
-    app: systemone-postgres
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /mnt/minikube/systemone/postgresql
-  claimRef:
-    namespace: systemone
-    name: systemone-postgres-volume-claim
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: systemone-archive-volume
-  labels:
-    type: local
-    app: systemone-archive
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /mnt/minikube/systemone/archive
-  claimRef:
-    namespace: systemone
-    name: systemone-archive-read-write-volume-claim
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: systemone-converted-files-volume
-  labels:
-    type: local
-    app: systemone-converted-files
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: /mnt/minikube/systemone/convertedFiles
-  claimRef:
-    namespace: systemone
-    name: systemone-converted-files-read-write-volume-claim
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: systemone-index-volume
-  labels:
-    type: local
-    app: systemone-index
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /mnt/minikube/systemone/index
-  claimRef:
-    namespace: systemone
-    name: systemone-index-read-write-volume-claim
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: systemone-postgres-volume
+#  labels:
+#    type: local
+#    app: systemone-postgres
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadWriteMany
+#  hostPath:
+#    path: /mnt/minikube/systemone/postgresql
+#  claimRef:
+#    namespace: systemone
+#    name: systemone-postgres-volume-claim
+#
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: systemone-archive-volume
+#  labels:
+#    type: local
+#    app: systemone-archive
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadWriteMany
+#  hostPath:
+#    path: /mnt/minikube/systemone/archive
+#  claimRef:
+#    namespace: systemone
+#    name: systemone-archive-read-write-volume-claim
+#
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: systemone-converted-files-volume
+#  labels:
+#    type: local
+#    app: systemone-converted-files
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadWriteMany
+#  hostPath:
+#    path: /mnt/minikube/systemone/convertedFiles
+#  claimRef:
+#    namespace: systemone
+#    name: systemone-converted-files-read-write-volume-claim
+#
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: systemone-index-volume
+#  labels:
+#    type: local
+#    app: systemone-index
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: /mnt/minikube/systemone/index
+#  claimRef:
+#    namespace: systemone
+#    name: systemone-index-read-write-volume-claim
