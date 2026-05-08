@@ -22,7 +22,7 @@ removeIndexedDataForDataDividers(){
   		echo "Removing previously indexed data for dataDivider: $dataDivider"
   		curl http://solr:8983/solr/coracore/update?commit=true \
 	  		-H "Content-Type: text/xml" \
-  			--data-raw "<delete><query>dataDivider_s:system_($dataDivider)</query></delete>"
+  			--data-raw "<delete><query>dataDivider_s:system_$dataDivider</query></delete>"
 	done
 }
 
