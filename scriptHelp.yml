@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: scripthelp
+  labels:
+    app: scripthelp
+spec:
+  restartPolicy: Always
+  initContainers:
+    - name: copy-scripts
+      image: docker.epc.ub.uu.se/cora-docker-console:1.2.0
+      command: ["sh", "-c", "cp /scripts-readonly/* /scripts/ && chmod +x /scripts/*"]
+      volumeMounts:
+        - name: script-volume-readonly
+          mountPath: /scripts-readonly
+        - name: script-volume-writable
+          mountPath: /scripts
+  containers:
+    - name: scripthelp
+      image: docker.epc.ub.uu.se/cora-docker-console:1.2.0
+      env:
+        - name: LOGINID
+          valueFrom:
+            secretKeyRef:
+              name: systemone-secret
+              key: indexLoginId
+        - name: RUNNING_URL
+          value: http://192.168.49.2:30980/rest/record/system
+        - name: RECORD_URL
+          value: http://192.168.49.2:30980/rest/record/
+        - name: IDP_LOGIN_URL
+          value: http://idplogin:8080/idplogin/login/rest/apptoken
+      volumeMounts:
+        - name: script-volume-writable
+          mountPath: /scripts
+      command: ["sleep", "infinity"]
+  volumes:
+    - name: script-volume-readonly
+      configMap:
+        name: cora-create-example-users-script
+    - name: script-volume-writable
+      emptyDir: {}

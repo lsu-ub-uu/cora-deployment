@@ -1,5 +1,4 @@
 {{- define "cora.job-create-example-users" -}}
-{{- if gt (len (default (list) .Values.data.exampleUsers)) 0 }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -40,5 +39,4 @@ spec:
         - name: script-volume
           configMap:
             name: cora-create-example-users-script
-{{- end }}
 {{- end }}

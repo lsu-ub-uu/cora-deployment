@@ -15,6 +15,17 @@ readRecordListFromUrl(){
     	-H "Accept: application/vnd.cora.recordList+xml" "$url")
 }
 
+getListOfRecordsFromUrl(){
+	local -n records="$1"
+	local type="$2"
+   	local recordList=$(readRecordListFromUrl "${AUTH_TOKEN}" "${RECORD_URL}${type}")
+	while IFS= read -r block; do
+		[[ -n "$block" ]] && records+=("$block")
+	done < <(echo "${recordList}" | \
+		xmllint --xpath '//dataList/data/record' - 2>/dev/null \
+		| sed 's|</record>|</record>\n|g')
+}
+
 sendDataToServer() {
 	local authToken="$1"
 	local updateLink="$2"

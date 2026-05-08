@@ -25,7 +25,6 @@ loginUsingIdpLogin() {
   
 setTokens() {
   local loginAnswer="$1"
-  #echo "loginAnser in setTokens: ${loginAnswer}"
   AUTH_TOKEN=$(echo "${loginAnswer}" | grep -oP '(?<={"name":"token","value":")[^"]+')
   AUTH_TOKEN_DELETE_URL=$(echo "${loginAnswer}" | grep -oP '(?<="url":")[^"]+')
 }
