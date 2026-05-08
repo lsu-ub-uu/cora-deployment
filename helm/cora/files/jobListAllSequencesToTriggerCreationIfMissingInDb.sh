@@ -7,7 +7,6 @@ start() {
 
 listAllSequencesToTriggerCreationIfMissingInDb() {
   importDependencies
-  waitingForListOfSystemToEnsureSystemIsRunning "${RUNNING_URL}"
   loginUsingIdpLogin
   listAllSequences
   logoutFromCora
@@ -16,7 +15,6 @@ listAllSequencesToTriggerCreationIfMissingInDb() {
 importDependencies(){
 	SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 	source "$SCRIPT_DIR/dataFromAndToServer.sh"
-	source "$SCRIPT_DIR/waitForSystemToBeRunning.sh"
 	source "$SCRIPT_DIR/login.sh"
 }
 

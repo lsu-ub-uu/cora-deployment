@@ -5,8 +5,6 @@ metadata:
 data:
   jobAddAppTokenAndCreateExampleUsers.sh: |-
 {{ .Files.Get "files/jobAddAppTokenAndCreateExampleUsers.sh" | indent 4 }}
-  waitForSystemToBeRunning.sh: |-
-{{ .Files.Get "files/waitForSystemToBeRunning.sh" | indent 4 }}
   dataFromAndToServer.sh: |-
 {{ .Files.Get "files/dataFromAndToServer.sh" | indent 4 }}
   appTokenForUser.sh: |-

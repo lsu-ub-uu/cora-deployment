@@ -1,20 +1,29 @@
 #!/bin/bash
 set -uo pipefail
 
+read -ra dataDividers <<< "$1"
+
 start() {
   importDependencies
-  waitingForListOfSystemToEnsureSystemIsRunning "${RECORDTYPE_URL}"
   echo "Starting indexing process..."
-#  loginUsingAppToken
   loginUsingIdpLogin
+  removeIndexedDataForDataDividers
   index
   logoutFromCora
 }
 
 importDependencies(){
 	SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-	source "$SCRIPT_DIR/waitForSystemToBeRunning.sh"
 	source "$SCRIPT_DIR/login.sh"
+}
+
+removeIndexedDataForDataDividers(){
+	for dataDivider in "${dataDividers[@]}"; do
+  		echo "Removing previously indexed data for dataDivider: $dataDivider"
+  		curl http://solr:8983/solr/coracore/update?commit=true \
+	  		-H "Content-Type: text/xml" \
+  			--data-raw "<delete><query>dataDivider_s:($dataDivider)</query></delete>"
+	done
 }
 
 index() {

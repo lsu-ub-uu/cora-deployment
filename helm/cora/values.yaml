@@ -17,6 +17,17 @@ initContainer:
         - -c
         - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
+  waitForRest:
+    - name: init-wait-for-rest
+      image: curlimages/curl:8.2.1
+      command:
+        - sh
+        - -c
+        - |
+          until curl -sf --connect-timeout 5 --max-time 10 http://apache/rest/record/system > /dev/null 2>&1; do
+            echo "Waiting for REST HTTP endpoint.."
+            sleep 5
+          done
   waitForSolr:
     - name: init-wait-for-solr
       image: curlimages/curl:8.2.1
@@ -24,7 +35,7 @@ initContainer:
         - sh
         - -c
         - |
-          until curl -s http://solr:8983/solr/admin/info/system | grep -q '"mode"'; do
+          until curl -sf --connect-timeout 5 --max-time 10 http://solr:8983/solr/admin/info/system | grep -q '"mode"'; do
             echo "Waiting for Solr HTTP endpoint.."
             sleep 5
           done

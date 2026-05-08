@@ -10,6 +10,8 @@ spec:
   template:
     spec:
       restartPolicy: OnFailure
+      initContainers:
+        {{- toYaml .Values.cora.initContainer.waitForRest | nindent 6 }}
       containers:
         - name: {{ .Values.system.name }}-job-create-missing-sequences
           image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.console }}

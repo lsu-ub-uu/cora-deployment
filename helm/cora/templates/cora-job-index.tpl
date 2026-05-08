@@ -10,6 +10,9 @@ spec:
   template:
     spec:
       restartPolicy: OnFailure
+      initContainers:
+        {{- toYaml .Values.cora.initContainer.waitForSolr | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForRest | nindent 6 }}
       containers:
         - name: {{ .Values.system.name }}-job-index
           image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.console }}
@@ -28,7 +31,10 @@ spec:
               mountPath: /scripts
               readOnly: true
           command: ["/bin/bash"]
-          args: ["/scripts/job-index.sh"]
+#          args: ["/scripts/job-index.sh"]
+          args: 
+            - "/scripts/job-index.sh"
+            - "{{ .Values.data.dataDividers }}"
       volumes:
         - name: script-volume
           configMap:
