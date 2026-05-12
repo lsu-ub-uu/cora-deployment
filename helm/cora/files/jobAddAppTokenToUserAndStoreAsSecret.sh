@@ -18,6 +18,7 @@ importDependencies(){
 }
 
 addAppTokenToUserAndStoreAsSecret() {
+	importDependencies
 	local userId="$1"
 	local note="$2"
     local updateAnswer=$(addAndStoreAppTokenToUser "${RECORD_URL}user/$userId" "$note")
