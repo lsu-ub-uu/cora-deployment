@@ -17,6 +17,20 @@ initContainer:
         - -c
         - until nc -z -v -w1 rabbitmq 5672; do echo "Waiting for RabbitMQ..";
           sleep 5; done
+  waitForLogin:
+    - name: init-wait-for-login
+      image: curlimages/curl:8.2.1
+      command:
+        - sh
+        - -c
+        - |
+          until status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "accept: application/vnd.cora.authentication+json" \
+            -H "eppn: EPPN will give guest" \
+            -k "http://idplogin:8080/idplogin/login/rest/apptoken") && [ "$status" -eq 201 ]; do
+            echo "Waiting for idpLogin HTTP endpoint.. (status=$status)"
+            sleep 5
+          done
   waitForRest:
     - name: init-wait-for-rest
       image: curlimages/curl:8.2.1

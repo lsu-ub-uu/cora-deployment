@@ -14,6 +14,7 @@ spec:
       restartPolicy: OnFailure
       initContainers:
         {{- toYaml .Values.cora.initContainer.waitForRest | nindent 6 }}
+        {{- toYaml .Values.cora.initContainer.waitForLogin | nindent 6 }}
       containers:
         - name: {{ .Values.system.name }}-job-create-apptoken-binaryconverter
           image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.console }}
