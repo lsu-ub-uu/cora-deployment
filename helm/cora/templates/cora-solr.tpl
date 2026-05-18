@@ -28,6 +28,7 @@ spec:
         runAsUser: 8983
         runAsGroup: 8983
         fsGroup: 8983
+        fsGroupChangePolicy: "OnRootMismatch"
       volumes:
         - name: index-read-write
           persistentVolumeClaim:
