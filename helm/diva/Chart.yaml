@@ -2,8 +2,8 @@ apiVersion: v2
 name: diva
 description: A Helm chart for DiVA on Kubernetes
 type: application
-version: 0.75.0
-appVersion: 1.85.0
+version: 0.76.0
+appVersion: 1.86.0
 dependencies:
   - name: cora
     version: 4.10.0
