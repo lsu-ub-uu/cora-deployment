@@ -8,11 +8,27 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
 
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: diva-archive-read-only-volume-claim
+  labels:
+    app: diva-archive
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 20Gi
+      
 ---
 
 apiVersion: v1
@@ -24,7 +40,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
@@ -73,7 +89,7 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: /mnt/minikube/diva/postgresql
   claimRef:
@@ -85,7 +101,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: diva-archive-volume
+  name: diva-archive-ro-volume
   labels:
     type: local
     app: diva-archive
@@ -93,7 +109,26 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadWriteMany
+    - ReadOnlyMany
+  hostPath:
+    path: /mnt/minikube/diva/archive
+  claimRef:
+    namespace: diva
+    name: diva-archive-read-only-volume-claim
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: diva-archive-rw-volume
+  labels:
+    type: local
+    app: diva-archive
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
   hostPath:
     path: /mnt/minikube/diva/archive
   claimRef:

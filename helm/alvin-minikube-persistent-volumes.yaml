@@ -8,7 +8,23 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alvin-archive-read-only-volume-claim
+  labels:
+    app: alvin-archive
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadOnlyMany
   resources:
     requests:
       storage: 20Gi
@@ -24,7 +40,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
@@ -73,7 +89,7 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: /mnt/minikube/alvin/postgresql
   claimRef:
@@ -85,7 +101,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: alvin-archive-volume
+  name: alvin-archive-ro-volume
   labels:
     type: local
     app: alvin-archive
@@ -93,7 +109,27 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-    - ReadWriteMany
+    - ReadOnlyMany
+  hostPath:
+    path: /mnt/minikube/alvin/archive
+  claimRef:
+    namespace: alvin
+    name: alvin-archive-read-only-volume-claim
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: alvin-archive-rw-volume
+  labels:
+    type: local
+    app: alvin-archive
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
   hostPath:
     path: /mnt/minikube/alvin/archive
   claimRef:

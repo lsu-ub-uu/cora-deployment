@@ -58,7 +58,7 @@ spec:
       volumes:
         - name: archive-read-write
           persistentVolumeClaim:
-            claimName: {{ .Values.system.name }}-archive-read-write-volume-claim
+            claimName: {{ .Values.system.name }}-archive-read-only-volume-claim
         - name: converted-files-read-write
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-converted-files-read-write-volume-claim
