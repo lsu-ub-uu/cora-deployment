@@ -23,11 +23,14 @@ metadata:
     app: systemone-archive
 spec:
   storageClassName: manual
+#  storageClassName: ""
   accessModes:
     - ReadOnlyMany
   resources:
     requests:
       storage: 20Gi
+  volumeMode: Filesystem
+  volumeName: systemone-archive-ro-volume
       
 ---
 
@@ -86,6 +89,7 @@ metadata:
     type: local
     app: systemone-postgres
 spec:
+  storageClassName: manual
   capacity:
     storage: 20Gi
   accessModes:
@@ -98,24 +102,71 @@ spec:
 
 ---
 
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: systemone-archive-ro-volume
+#  labels:
+#    type: local
+#    app: systemone-archive
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadOnlyMany
+#  hostPath:
+#    path: /mnt/minikube/systemone/archive
+#  claimRef:
+#    namespace: systemone
+#    name: systemone-archive-read-only-volume-claim
+#    
+---
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: systemone-archive-ro-volume
   labels:
-    type: local
-    app: systemone-archive
+    target: systemone
 spec:
+#Behöver vi ange capacity?
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadOnlyMany
-  hostPath:
-    path: /mnt/minikube/systemone/archive
+  accessModes: ["ReadOnlyMany"]
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  csi:
+    driver: nfs.csi.k8s.io
+    volumeHandle: systemone-archive-ro-volume
+    volumeAttributes:
+      server: systemone-nfs.systemone.svc.cluster.local
+#      server: systemone-nfs.systemone.svc.cluster.local
+#      server: systemone-fedora.systemone.svc.cluster.local
+      share: /archive-read-only
+      mountOptions: "nolock,vers=4,actimeo=60,lookupcache=positive,nocto,noatime,nodiratime"
   claimRef:
     namespace: systemone
     name: systemone-archive-read-only-volume-claim
-    
+  storageClassName: manual
+  
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: ${VOLUMES[${NAME}]}
+#  namespace: ${DST_NS}
+#  labels:
+#    target: ${DST_NS}
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  resources:
+#    requests:
+#      storage: ${SIZES[${NAME}]}
+#  volumeName: ${NAME}
+#  volumeMode: Filesystem
+#  storageClassName: ""
+#
 ---
 
 apiVersion: v1
@@ -126,6 +177,7 @@ metadata:
     type: local
     app: systemone-archive
 spec:
+  storageClassName: manual
   capacity:
     storage: 20Gi
   accessModes:
@@ -146,6 +198,7 @@ metadata:
     type: local
     app: systemone-converted-files
 spec:
+  storageClassName: manual
   capacity:
     storage: 20Gi
   accessModes:

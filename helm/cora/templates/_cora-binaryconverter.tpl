@@ -51,12 +51,12 @@ spec:
           value: "/tmp/sharedFileStorage/{{ .Values.system.pathName }}"
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
-          name: archive-read-write
+          name: archive-read-only
           readOnly: true
         - mountPath: "/tmp/sharedFileStorage/{{ .Values.system.pathName }}"
           name: converted-files-read-write
       volumes:
-        - name: archive-read-write
+        - name: archive-read-only
           persistentVolumeClaim:
             claimName: {{ .Values.system.name }}-archive-read-only-volume-claim
         - name: converted-files-read-write
