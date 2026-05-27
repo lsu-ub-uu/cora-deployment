@@ -113,7 +113,7 @@ data:
       Export_Id = 11;
       Path = "/archive-read-only";
       Pseudo = "/archive-read-only";
-      Access_Type = RW;
+      Access_Type = RO;
       Squash = No_Root_Squash;
       FSAL {
         Name = VFS;
