@@ -101,26 +101,6 @@ spec:
 
 ---
 
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
-#  name: systemone-archive-ro-volume
-#  labels:
-#    type: local
-#    app: systemone-archive
-#spec:
-#  capacity:
-#    storage: 20Gi
-#  accessModes:
-#    - ReadOnlyMany
-#  hostPath:
-#    path: /mnt/minikube/systemone/archive
-#  claimRef:
-#    namespace: systemone
-#    name: systemone-archive-read-only-volume-claim
-#    
----
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -146,24 +126,6 @@ spec:
     name: systemone-archive-read-only-volume-claim
   storageClassName: manual
   
-#---
-#apiVersion: v1
-#kind: PersistentVolumeClaim
-#metadata:
-#  name: ${VOLUMES[${NAME}]}
-#  namespace: ${DST_NS}
-#  labels:
-#    target: ${DST_NS}
-#spec:
-#  accessModes:
-#    - ReadWriteMany
-#  resources:
-#    requests:
-#      storage: ${SIZES[${NAME}]}
-#  volumeName: ${NAME}
-#  volumeMode: Filesystem
-#  storageClassName: ""
-#
 ---
 
 apiVersion: v1
@@ -206,22 +168,3 @@ spec:
     namespace: systemone
     name: systemone-converted-files-read-write-volume-claim
 
-#OBS: Vi behöver inte definera PV. De kommer att blir autoskappade. Om man vill ser data i den, kan man hittar den i minikube instansen.
-#---
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
-#  name: systemone-index-volume
-#  labels:
-#    type: local
-#    app: systemone-index
-#spec:
-#  capacity:
-#    storage: 20Gi
-#  accessModes:
-#    - ReadWriteOnce
-#  hostPath:
-#    path: /mnt/minikube/systemone/index
-#  claimRef:
-#    namespace: systemone
-#    name: systemone-index-read-write-volume-claim
