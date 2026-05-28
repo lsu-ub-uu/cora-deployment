@@ -28,6 +28,8 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  volumeMode: Filesystem
+  volumeName: alvin-archive-ro-volume
 
 ---
 
@@ -104,18 +106,23 @@ metadata:
   name: alvin-archive-ro-volume
   labels:
     type: local
-    app: alvin-archive
 spec:
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadOnlyMany
-  hostPath:
-    path: /mnt/minikube/alvin/archive
+  accessModes: ["ReadOnlyMany"]
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  csi:
+    driver: nfs.csi.k8s.io
+    volumeHandle: alvin-archive-ro-volume
+    volumeAttributes:
+      server: alvin-nfs.alvin.svc.cluster.local
+      share: /archive-read-only
+      mountOptions: "nolock,vers=4,actimeo=60,lookupcache=positive,nocto,noatime,nodiratime"
   claimRef:
     namespace: alvin
     name: alvin-archive-read-only-volume-claim
-
+  storageClassName: manual
 ---
 
 apiVersion: v1

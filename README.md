@@ -8,14 +8,25 @@ start minikube, adjust as needed
 minikube start --memory 32192 --cpus 16 --mount --mount-string "/mnt/someplace/minikube/:/mnt/minikube"
 
 ```
-
-## To use helm from epc repository
+##Setup Minikube
+### To use helm from epc repository
 
 ```bash
 helm repo add epc https://helm.epc.ub.uu.se/
 helm repo update
 ```
 
+### Add NFS csi-driver
+```bash
+helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs   --namespace kube-system
+```
+### Raise max open files on your computer
+```bash
+echo 'fs.inotify.max_user_instances=1024' | sudo tee -a /etc/sysctl.conf
+echo 'fs.inotify.max_queued_events=32768' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
 ## Install systemOne using helm, from epc repository
 
 ```bash

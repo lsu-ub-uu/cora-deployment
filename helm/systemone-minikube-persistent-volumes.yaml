@@ -23,7 +23,6 @@ metadata:
     app: systemone-archive
 spec:
   storageClassName: manual
-#  storageClassName: ""
   accessModes:
     - ReadOnlyMany
   resources:
@@ -140,8 +139,6 @@ spec:
     volumeHandle: systemone-archive-ro-volume
     volumeAttributes:
       server: systemone-nfs.systemone.svc.cluster.local
-#      server: systemone-nfs.systemone.svc.cluster.local
-#      server: systemone-fedora.systemone.svc.cluster.local
       share: /archive-read-only
       mountOptions: "nolock,vers=4,actimeo=60,lookupcache=positive,nocto,noatime,nodiratime"
   claimRef:

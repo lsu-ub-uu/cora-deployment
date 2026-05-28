@@ -28,6 +28,8 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  volumeMode: Filesystem
+  volumeName: diva-archive-ro-volume
       
 ---
 
@@ -96,6 +98,26 @@ spec:
     namespace: diva
     name: diva-postgres-volume-claim
 
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: diva-archive-ro-volume
+#  labels:
+#    type: local
+#    app: diva-archive
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#    - ReadOnlyMany
+#  hostPath:
+#    path: /mnt/minikube/diva/archive
+#  claimRef:
+#    namespace: diva
+#    name: diva-archive-read-only-volume-claim
+
 ---
 
 apiVersion: v1
@@ -103,18 +125,26 @@ kind: PersistentVolume
 metadata:
   name: diva-archive-ro-volume
   labels:
-    type: local
-    app: diva-archive
+    target: diva
 spec:
+#Behöver vi ange capacity?
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadOnlyMany
-  hostPath:
-    path: /mnt/minikube/diva/archive
+  accessModes: ["ReadOnlyMany"]
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  csi:
+    driver: nfs.csi.k8s.io
+    volumeHandle: diva-archive-ro-volume
+    volumeAttributes:
+      server: diva-nfs.diva.svc.cluster.local
+      share: /archive-read-only
+      mountOptions: "nolock,vers=4,actimeo=60,lookupcache=positive,nocto,noatime,nodiratime"
   claimRef:
     namespace: diva
     name: diva-archive-read-only-volume-claim
+  storageClassName: manual
+
 ---
 
 apiVersion: v1
@@ -145,6 +175,7 @@ metadata:
     type: local
     app: diva-converted-files
 spec:
+  storageClassName: manual
   capacity:
     storage: 20Gi
   accessModes:
