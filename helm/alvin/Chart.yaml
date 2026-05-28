@@ -2,8 +2,8 @@ apiVersion: v2
 name: alvin
 description: A Helm chart for Alvin on Kubernetes
 type: application
-version: 0.46.0
-appVersion: 0.54.0
+version: 0.47.0
+appVersion: 0.55.0
 dependencies:
   - name: cora
     version: 4.11.0
