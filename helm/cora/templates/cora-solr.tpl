@@ -15,6 +15,26 @@ spec:
       labels:
         app: {{ .Values.system.name }}-solr
     spec:
+      initContainers:
+      - name: {{ .Values.system.name }}-solr-configurator
+        image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.solr }}
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            set -e
+            
+            SOURCE_CONFIG="/opt/solr/server/solr/configsets/coradefaultcore/conf"
+            TARGET_CONFIG="/var/solr/data/coracore/conf"
+            
+            if [ -d "$TARGET_CONFIG" ]; then
+              echo "Existing core detected, syncing config"
+              cp -r "$SOURCE_CONFIG" "$TARGET_CONFIG"
+            else
+              echo "Core does not exist yet, skipping sync so solr-precreate can create it"
+            fi
+        volumeMounts:
+        - mountPath: "/var/solr/data"
+          name: index-read-write
       containers:
       - name: {{ .Values.system.name }}-solr
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.solr }}
