@@ -24,7 +24,7 @@ spec:
             set -e
             
             SOURCE_CONFIG="/opt/solr/server/solr/configsets/coradefaultcore/conf"
-            TARGET_CONFIG="/var/solr/data/coracore/conf"
+            TARGET_CONFIG="/var/solr/data/coracore"
             
             if [ -d "$TARGET_CONFIG" ]; then
               echo "Existing core detected, syncing config"
