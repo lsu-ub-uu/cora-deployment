@@ -20,6 +20,16 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fedora }}
         ports:
         - containerPort: 8080
+        env:
+        - name: POSTGRES_HOST
+          value: {{ .Values.system.name }}-postgresql
+        - name: POSTGRES_DB
+          value: {{ .Values.system.name }}
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: POSTGRES_USER
         volumeMounts:
         - mountPath: "/usr/local/tomcat/fcrepo-home/data/ocfl-root"
           name: archive-read-write
