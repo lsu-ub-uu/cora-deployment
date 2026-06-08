@@ -15,6 +15,8 @@ spec:
       labels:
         app: {{ .Values.system.name }}-fedora
     spec:
+      initContainers:
+        {{- include "cora.initContainer.waitForDbAndUpdatedbVersion" . | nindent 6 }}
       containers:
       - name: {{ .Values.system.name }}-fedora
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.fedora }}
