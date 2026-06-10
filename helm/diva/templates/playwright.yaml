@@ -20,7 +20,7 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.playwright }}
         env:
         - name: TARGET_URL
-          value: {{- if .Values.security.divaClientSecureSessionCookie }}
+          value: {{- if .Values.divaClient.secureSessionCookie }}
             "{{ .Values.externalAccess.systemUrl }}{{ .Values.externalAccess.divaClientBasePath }}"
           {{- else }}
             "http://diva-divaclient:5173/divaclient"

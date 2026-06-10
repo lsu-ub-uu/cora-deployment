@@ -44,12 +44,15 @@ spec:
         - name: BASE_PATH
           value: {{ .Values.externalAccess.divaClientBasePath}}
         - name: SESSION_SECURE
-          value: {{ .Values.security.divaClientSecureSessionCookie | quote }}
+          value: {{ .Values.divaClient.secureSessionCookie | quote }}
         - name: SESSION_SECRETS
           valueFrom:
             secretKeyRef:
               name: {{ .Values.system.name }}-secret
               key: divaClientSessionCookieSecrets
+        - name: BLOCK_ROBOT_INDEXING
+          value: {{ .Values.divaClient.blockRobotIndexing | quote }}
+
         ports:
         - containerPort: 5173
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}

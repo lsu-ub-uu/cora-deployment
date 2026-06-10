@@ -31,8 +31,6 @@ deploy:
   playwright: false
 data:
   dataDividers: cora jsClient diva
-security:
-  divaClientSecureSessionCookie: true
 externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   divaClientBasePath: /divaclient
@@ -53,6 +51,9 @@ fitnesse:
   contextRoot: fitnesse
   baseUrl: http://apache/
   loginUrl: http://apache/login/
+divaClient:
+  blockRobotIndexing: true
+  secureSessionCookie: true
 docker:
   rabbitmq: cora-docker-rabbitmq:1.4.0
   fedora: cora-docker-fedora:1.6.0
