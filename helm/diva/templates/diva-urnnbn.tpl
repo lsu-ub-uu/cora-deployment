@@ -29,3 +29,17 @@ spec:
       {{- end }}
 
 ---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.system.name }}-urnnbn
+spec:
+  selector:
+    app: {{ .Values.system.name }}-urnnbn
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      
+---
