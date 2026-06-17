@@ -197,6 +197,7 @@ get your minikube ip: minikube ip
 This should start a local version of diva accessable at:<br>
 
 - rest: http://192.168.49.2:30982/rest/
+- urnnbn: http://192.168.49.2:30982/urn-nbn/
 - login: http://192.168.49.2:30982/login/
 - jsClient: http://192.168.49.2:30982/jsclient/
 - idplogin: http://192.168.49.2:30982/idplogin/
