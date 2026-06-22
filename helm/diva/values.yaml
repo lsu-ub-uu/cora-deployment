@@ -68,7 +68,7 @@ docker:
   fitnesse: diva-cora-docker-fitnesse:1.43.0
   gatekeeper: diva-docker-gatekeeper:1.4.0
   rest: diva-docker-cora:1.30.0
-  divaclient: diva-docker-divaclient:1.165.0
+  divaclient: diva-docker-divaclient:1.166.0
   apache: diva-docker-apache:1.20.0
   console: cora-docker-console:1.2.0
   playwright: diva-docker-playwright:1.56.0
