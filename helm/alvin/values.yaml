@@ -34,7 +34,7 @@ externalAccess:
   systemUrl: http://mustBeSetOnSpecificEnvironmentValuesFile
   applicationName: alvin
   loginPathSystem: /login/rest/
-  alvinClientPath: alvinclient
+  alvinClientPath: alvin
 port:
   nodePort: true
   apache: 30981
@@ -42,7 +42,7 @@ apache:
   useExtraEnvs: true
   extraEnvs:
     - name: ALVIN_CLIENT_CONTEXT_ROOT_ARG
-      value: alvinclient
+      value: alvin
 shibboleth:
   entityId: mustBeSetOnSpecificEnvironmentValuesFile
   domain: mustBeSetOnSpecificEnvironmentValuesFile
