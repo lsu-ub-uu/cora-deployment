@@ -23,6 +23,8 @@ spec:
           value: "false"
         - name: API_HOST
           value: "http://apache"
+        - name: EXTERNAL_ACCESS_URL
+          value: {{ .Values.externalAccess.systemUrl }}
         - name: ALLOWED_HOSTS
           value: {{ .Values.django.allowedHosts | quote}}
         - name: CSRF_TRUSTED_ORIGINS
