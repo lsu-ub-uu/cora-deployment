@@ -3,7 +3,7 @@ name: alvin
 description: A Helm chart for Alvin on Kubernetes
 type: application
 version: 0.75.0
-appVersion: 0.83.0
+appVersion: "dev"
 dependencies:
   - name: cora
     version: 4.16.0

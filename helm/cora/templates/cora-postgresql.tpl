@@ -23,7 +23,7 @@ spec:
         - containerPort: 5432
         env:
         - name: applicationVersion
-          value: {{ .Chart.AppVersion }}
+          value: {{ .Chart.Version }}
         - name: POSTGRES_DB
           value: {{ .Values.system.name }}
         - name: POSTGRES_USER

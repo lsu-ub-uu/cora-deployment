@@ -19,7 +19,7 @@
           name: {{ .Values.system.name }}-secret
           key: POSTGRES_PASSWORD
     - name: applicationVersion
-      value: {{ .Chart.AppVersion }}
+      value: {{ .Chart.Version }}
   command:
     - sh
     - -c
