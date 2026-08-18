@@ -22,7 +22,7 @@ spec:
         ports:
         - containerPort: 5432
         env:
-        - name: applicationVersion
+        - name: helmChartVersion
           value: {{ .Chart.Version }}
         - name: POSTGRES_DB
           value: {{ .Values.system.name }}

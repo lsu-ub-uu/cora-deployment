@@ -25,7 +25,7 @@ spec:
         args:
           - ./updatedb/updateDb.sh
         env:
-        - name: applicationVersion
+        - name: helmChartVersion
           value: {{ .Chart.Version }}
         - name: POSTGRES_HOST
           value: {{ .Values.system.name }}-postgresql

@@ -18,7 +18,7 @@
         secretKeyRef:
           name: {{ .Values.system.name }}-secret
           key: POSTGRES_PASSWORD
-    - name: applicationVersion
+    - name: helmChartVersion
       value: {{ .Chart.Version }}
   command:
     - sh
@@ -26,8 +26,8 @@
     - |
       set -e
       until pg_isready; do echo waiting for database; sleep 2; done
-      until psql -tAc "select value from cora_meta where key='updatedb_version'" | grep -qx "$applicationVersion"; do
-        echo "waiting for updatedb_version=$applicationVersion"
+      until psql -tAc "select value from cora_meta where key='updatedb_version'" | grep -qx "$helmChartVersion"; do
+        echo "waiting for updatedb_version=$helmChartVersion"
         sleep 2
       done
 {{- end -}}
