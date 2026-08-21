@@ -38,7 +38,7 @@ spec:
         {{- end -}}
         {{- $version -}}"
         - name: applicationVersion
-          value: {{ .Chart.AppVersion }}
+          value: {{ .Chart.AppVersion | quote}}
         - name: helmChartVersion
           value: {{ .Chart.Version }}
         - name: loginRestUrl
