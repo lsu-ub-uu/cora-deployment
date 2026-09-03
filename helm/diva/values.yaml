@@ -54,6 +54,7 @@ fitnesse:
   contextRoot: fitnesse
   baseUrl: http://apache/
   loginUrl: http://apache/login/
+  urnnbnUrl: http://apache/urn-nbn/
 divaClient:
   blockRobotIndexing: true
   secureSessionCookie: true
