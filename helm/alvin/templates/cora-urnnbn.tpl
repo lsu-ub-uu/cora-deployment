@@ -23,7 +23,6 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.urnnbn }}
         ports:
         - containerPort: 8080
-      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
         env:
         - name: databaseUrl
           value: {{ .Values.urnnbn.databaseUrl }}
@@ -41,6 +40,7 @@ spec:
           value: {{ .Values.urnnbn.urlPattern }}
         - name: JAVA_OPTS
           value: -Ddatabase.url="${databaseUrl}" -Ddatabase.user="${databaseUser}" -Ddatabase.password="${databasePassword}" -DurlPatternForUrnNbn="${urlPattern}"
+      {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
       {{- end }}
