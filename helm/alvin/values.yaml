@@ -35,6 +35,9 @@ externalAccess:
   applicationName: alvin
   loginPathSystem: /login/rest/
   alvinClientPath: alvin
+urnnbn:
+  databaseUrl: jdbc:postgresql://alvin-postgresql:5432/alvin
+  urlPattern: /alvin/alvin-record/%id%
 port:
   nodePort: true
   apache: 30981
@@ -69,3 +72,4 @@ docker:
   console: cora-docker-console:1.2.0
   alvinclient: alvin-docker-alvinclient:1.31.0
   apache: alvin-docker-apache:1.15.0
+  urnnbn: cora-docker-urnnbn:1.0.0
