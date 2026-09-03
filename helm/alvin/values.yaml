@@ -55,6 +55,7 @@ fitnesse:
   contextRoot: fitnesse
   baseUrl: http://apache/
   loginUrl: http://apache/login/
+  urnnbnUrl: http://apache/urn-nbn/
 docker:
   rabbitmq: cora-docker-rabbitmq:1.4.0
   fedora: cora-docker-fedora:1.6.0

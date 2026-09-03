@@ -62,6 +62,8 @@ spec:
             secretKeyRef:
               name: 121212-secret
               key: appToken
+        - name: FITNESSE_URNNBN_URL
+          value: {{ .Values.fitnesse.urnnbnUrl }}
         volumeMounts:
         - mountPath: "/tmp/sharedArchiveReadable/{{ .Values.system.pathName }}"
           name: archive-read-write
