@@ -23,6 +23,23 @@ spec:
         image: {{ .Values.cora.dockerRepository.url }}{{ .Values.docker.urnnbn }}
         ports:
         - containerPort: 8080
+        env:
+        - name: databaseUrl
+          value: {{ .Values.urnnbn.databaseUrl }}
+        - name: databaseUser
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: POSTGRES_USER
+        - name: databasePassword
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.system.name }}-secret
+              key: POSTGRES_PASSWORD
+        - name: urlPattern
+          value: {{ .Values.urnnbn.urlPattern }}
+        - name: JAVA_OPTS
+          value: -Ddatabase.url="${databaseUrl}" -Ddatabase.user="${databaseUser}" -Ddatabase.password="${databasePassword}" -DurlPatternForUrnNbn="${urlPattern}"
       {{- if .Values.cora.dockerRepository.useImagePullSecrets }}
       imagePullSecrets:
       - name: {{ .Values.cora.dockerRepository.imagePullSecrets }}
