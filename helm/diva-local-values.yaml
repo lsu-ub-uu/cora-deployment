@@ -1,6 +1,7 @@
 deploy:
   fitnesse: true
   playwright: true
+  apihelper: true
 
 data:
   dataDividers: "cora jsClient diva divaPreview divaPre divaProduction divaClient"

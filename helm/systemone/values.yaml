@@ -27,6 +27,7 @@ system:
 deploy:
   fitnesse: false
   jsclient: true
+  apihelper: false
 data:
   dataDividers: cora jsClient systemOne
 externalAccess:
