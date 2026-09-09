@@ -64,3 +64,5 @@ docker:
   rest: systemone-docker:1.40.0
   apache: systemone-docker-apache:1.19.0
   console: cora-docker-console:1.2.0
+  apihelper: cora-docker-api-helper:1.1.0
+
