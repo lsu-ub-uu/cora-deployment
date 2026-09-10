@@ -78,4 +78,4 @@ docker:
   console: cora-docker-console:1.2.0
   playwright: diva-docker-playwright:1.62.0
   urnnbn: cora-docker-urnnbn:1.0.0
-  apihelper: cora-docker-api-helper:1.1.0
+  apihelper: cora-docker-api-helper:1.2.0
