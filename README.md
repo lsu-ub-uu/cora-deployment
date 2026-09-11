@@ -36,10 +36,10 @@ kubectl apply -f systemone-secret.yaml --namespace=systemone
 kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace systemone
 kubectl apply -f systemone-config-map.yaml --namespace systemone
 
-helm install my2026011320260113systemone epc/systemone --namespace systemone -f systemone-local-values.yaml
+helm install my20260911systemone epc/systemone --namespace systemone -f systemone-local-values.yaml
 #or search and deploy specific version
 helm search repo epc
-helm install my20260113systemone epc/systemone --namespace systemone --version 0.7.31 -f systemone-local-values.yaml
+helm install my20260911systemone epc/systemone --namespace systemone --version 0.7.31 -f systemone-local-values.yaml
 ```
 
 ## Run systemOne using helm, from local helm files
@@ -52,7 +52,7 @@ kubectl create namespace systemone
 kubectl apply -f systemone-secret.yaml --namespace=systemone
 kubectl apply -f systemone-minikube-persistent-volumes.yaml --namespace=systemone
 kubectl apply -f systemone-config-map.yaml --namespace systemone
-helm install my20260113systemone systemone --namespace systemone -f systemone-local-values.yaml
+helm install my20260911systemone systemone --namespace systemone -f systemone-local-values.yaml
 ```
 
 you can watch the progress with:
@@ -77,6 +77,7 @@ This should start a local version of systemOne accessable at:<br>
 - jsClient: http://192.168.49.2:30980/jsclient/
 - idplogin: http://192.168.49.2:30980/idplogin/
 - fitnesse: http://192.168.49.2:30980/fitnesse/
+- apihelper: http://192.168.49.2:30980/api-helper/
 
 ### to remove and start over
 
@@ -95,10 +96,10 @@ kubectl apply -f alvin-secret.yaml --namespace=alvin
 kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace alvin
 kubectl apply -f alvin-config-map.yaml --namespace alvin
 
-helm install my20260113alvin epc/alvin --namespace alvin -f alvin-local-values.yaml
+helm install my20260911alvin epc/alvin --namespace alvin -f alvin-local-values.yaml
 #or search and deploy specific version
 helm search repo epc
-helm install my20260113alvin epc/alvin --namespace alvin --version 0.6.38 -f alvin-local-values.yaml
+helm install my20260911alvin epc/alvin --namespace alvin --version 0.6.38 -f alvin-local-values.yaml
 ```
 
 ## Run alvin using helm, from local helm files
@@ -111,7 +112,7 @@ kubectl create namespace alvin
 kubectl apply -f alvin-secret.yaml --namespace=alvin
 kubectl apply -f alvin-minikube-persistent-volumes.yaml --namespace=alvin
 kubectl apply -f alvin-config-map.yaml --namespace alvin
-helm install my20260113alvin alvin --namespace alvin -f alvin-local-values.yaml
+helm install my20260911alvin alvin --namespace alvin -f alvin-local-values.yaml
 ```
 
 you can watch the progress with:
@@ -138,7 +139,8 @@ This should start a local version of alvin accessable at:<br>
 - jsClient: http://192.168.49.2:30981/jsclient/
 - idplogin: http://192.168.49.2:30981/idplogin
 - fitnesse: http://192.168.49.2:30981/fitnesse/
-- alvinclient: http://192.168.49.2:30981/alvinclient
+- alvinclient: http://192.168.49.2:30981/alvin/
+- apihelper: http://192.168.49.2:30981/api-helper/
 
 
 ### to remove and start over
@@ -157,10 +159,10 @@ kubectl apply -f diva-secret.yaml --namespace=diva
 kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace diva
 kubectl apply -f diva-config-map.yaml --namespace diva
 
-helm install my20260113diva epc/diva --namespace diva -f diva-local-values.yaml
+helm install my20260911diva epc/diva --namespace diva -f diva-local-values.yaml
 #or search and deploy specific version
 helm search repo epc
-helm install my20260113diva epc/diva --namespace diva --version 0.6.56 -f diva-local-values.yaml
+helm install my20260911diva epc/diva --namespace diva --version 0.6.56 -f diva-local-values.yaml
 ```
 
 ## Run DiVA using helm, from local helm files
@@ -173,7 +175,7 @@ kubectl create namespace diva
 kubectl apply -f diva-secret.yaml --namespace=diva
 kubectl apply -f diva-minikube-persistent-volumes.yaml --namespace=diva
 kubectl apply -f diva-config-map.yaml --namespace diva
-helm install my20260113diva diva --namespace diva -f diva-local-values.yaml
+helm install my20260911diva diva --namespace diva -f diva-local-values.yaml
 
 ```
 
@@ -202,6 +204,7 @@ This should start a local version of diva accessable at:<br>
 - jsClient: http://192.168.49.2:30982/jsclient/
 - idplogin: http://192.168.49.2:30982/idplogin/
 - fitnesse: http://192.168.49.2:30982/fitnesse/
+- apihelper: http://192.168.49.2:30982/api-helper/
 - divaclient: http://192.168.49.2:30982/divaclient
 - playwright: http://192.168.49.2:30782
 
