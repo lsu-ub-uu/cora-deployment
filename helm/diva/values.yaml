@@ -70,7 +70,7 @@ docker:
   jsclient: cora-docker-jsclient:1.37.0
   binaryconverter: cora-docker-binaryconverter:1.16.0
   postgresql: diva-docker-postgresql:1.335.0
-  fitnesse: diva-cora-docker-fitnesse:1.45.0
+  fitnesse: diva-cora-docker-fitnesse:1.47.0
   gatekeeper: diva-docker-gatekeeper:1.4.0
   rest: diva-docker-cora:1.35.0
   divaclient: diva-docker-divaclient:1.198.0
