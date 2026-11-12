@@ -63,5 +63,5 @@ docker:
   fitnesse: systemone-docker-fitnesse:1.74.0
   rest: systemone-docker:1.47.0
   apache: systemone-docker-apache:1.20.0
-  console: cora-docker-console:1.2.0
+  console: cora-docker-console:1.3.0
   apihelper: cora-docker-api-helper:1.8.0
