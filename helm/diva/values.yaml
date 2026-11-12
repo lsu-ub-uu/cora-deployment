@@ -60,7 +60,7 @@ divaClient:
   blockRobotIndexing: true
   secureSessionCookie: true
 docker:
-  rabbitmq: cora-docker-rabbitmq:1.4.0
+  rabbitmq: cora-docker-rabbitmq:1.5.0
   fedora: cora-docker-fedora:1.6.0
   nfs: cora-docker-nfs:0.2.0
   solr: diva-docker-solr:1.2.0
